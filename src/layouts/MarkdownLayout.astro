@@ -1,0 +1,42 @@
+---
+import BaseLayout from './BaseLayout.astro';
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+    
+    <article class="blog-post">
+        <h1>{frontmatter.title}</h1>
+        <div class="meta">
+            <span>By {frontmatter.author}</span> • 
+            <span>{frontmatter.pubDate.slice(0,10)}</span>
+        </div>
+        
+        <hr />
+        
+        <div class="content">
+            <slot />
+        </div>
+    </article>
+
+</BaseLayout>
+
+<style>
+    /* Scoped CSS: This only affects this file */
+    .meta {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    .blog-post {
+        margin-top: 2rem;
+    }
+    /* Style the markdown content specifically */
+    .content :global(h2) {
+        margin-top: 2rem;
+        border-bottom: none;
+    }
+    .content :global(ul) {
+        margin-left: 1.5rem;
+    }
+</style>
