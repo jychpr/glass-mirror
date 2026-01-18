@@ -1,5 +1,11 @@
+---
+import ThemeIcon from './ThemeIcon.astro';
+---
 <header>
-    <h1>Your Name</h1>
+    <div class="header-top">
+        <h1>Your Name</h1>
+        <ThemeIcon />
+    </div>
     <p>Software Engineer / Learner / Human</p>
     <nav>
         <a href="/glass-mirror/">Home</a>
@@ -8,15 +14,13 @@
 </header>
 
 <style>
-    nav {
-        margin-top: 1rem;
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-    nav a {
-        margin-right: 1rem;
-        color: #333;
-        font-weight: bold;
-    }
-    nav a:hover {
-        color: #0070f3;
-    }
+    /* ... keep your existing nav styles ... */
+    nav { margin-top: 1rem; }
+    nav a { margin-right: 1rem; color: var(--text-color); font-weight: bold; }
+    nav a:hover { color: var(--accent-color); }
 </style>
