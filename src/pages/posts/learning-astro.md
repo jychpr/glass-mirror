@@ -5,6 +5,9 @@ pubDate: 2026-01-17
 description: 'My journey moving from raw HTML to a static site generator.'
 author: 'Joy Chrissetyo'
 tags: ["blog"]
+image:
+    url: '/glass-mirror/images/test.jpg' 
+    alt: 'A computer screen showing code'
 ---
 
 ## Why I switched
