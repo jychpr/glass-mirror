@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Blog";
+
+const allPosts = await Astro.glob('./posts/*.md');
+
+// FILTERING LOGIC
+const tils = allPosts.filter((post) => post.frontmatter.tags?.includes('til'));
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <h2>Writing</h2>
+    <p>Thoughts on code, simplicity, and structure.</p>
+
+    <ul class="link-list">
+        {tils.map((post) => (
+            <li>
+                <span class="label">{post.frontmatter.pubDate.slice(0,10)}</span>
+                <a href={post.url}>{post.frontmatter.title}</a>
+            </li>
+        ))}
+    </ul>
+</BaseLayout>
