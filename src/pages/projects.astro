@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Projects";
+
+const allPosts = await Astro.glob('./posts/*.md');
+
+// FILTERING LOGIC:
+// Only keep posts that have 'project' in their tags array
+const projects = allPosts.filter((post) => post.frontmatter.tags?.includes('project'));
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <h2>My Projects</h2>
+    <p>Things I have built and shipped.</p>
+
+    <ul class="link-list">
+        {projects.map((post) => (
+            <li>
+                <div style="display: flex; flex-direction: column;">
+                    <a href={post.url} style="font-weight: bold;">{post.frontmatter.title}</a>
+                    <span style="font-size: 0.85rem; color: var(--secondary-text);">{post.frontmatter.description}</span>
+                </div>
+                <span class="label">{post.frontmatter.pubDate.slice(0,10)}</span>
+            </li>
+        ))}
+    </ul>
+</BaseLayout>

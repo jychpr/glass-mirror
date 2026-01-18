@@ -4,6 +4,7 @@ title: 'Learning Astro'
 pubDate: 2026-01-17
 description: 'My journey moving from raw HTML to a static site generator.'
 author: 'Joy Chrissetyo'
+tags: ["blog"]
 ---
 
 ## Why I switched
