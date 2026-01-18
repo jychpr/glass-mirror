@@ -13,15 +13,81 @@ const projects = allPosts.filter((post) => post.frontmatter.tags?.includes('proj
     <h2>My Projects</h2>
     <p>Things I have built and shipped.</p>
 
-    <ul class="link-list">
-        {projects.map((post) => (
-            <li>
-                <div style="display: flex; flex-direction: column;">
-                    <a href={post.url} style="font-weight: bold;">{post.frontmatter.title}</a>
-                    <span style="font-size: 0.85rem; color: var(--secondary-text);">{post.frontmatter.description}</span>
-                </div>
-                <span class="label">{post.frontmatter.pubDate.slice(0,10)}</span>
-            </li>
-        ))}
-    </ul>
+    <div class="card-grid">
+        {projects.map((post) => {
+            // 1. Define the image source: Use the post's image OR a default fallback
+            const imageSrc = post.frontmatter.image?.url || '/glass-mirror/images/test.jpg';
+            const imageAlt = post.frontmatter.image?.alt || 'Default project thumbnail';
+
+            return (
+                <a href={post.url} class="card">
+                    <div class="card-image">
+                        <img src={imageSrc} alt={imageAlt} />
+                    </div>
+                    
+                    <div class="card-content">
+                        <h3>{post.frontmatter.title}</h3>
+                        <p>{post.frontmatter.description}</p>
+                        <span class="date">{post.frontmatter.pubDate.slice(0,10)}</span>
+                    </div>
+                </a>
+            )
+        })}
+    </div>
+
+    <style>
+        /* CSS GRID MAGIC */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none; /* Remove underline from card */
+            color: var(--text-color);
+            background: var(--bg-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            text-decoration: none;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover; /* Ensures image covers the box without stretching */
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        .card-content h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.25rem;
+            color: var(--text-color);
+        }
+
+        .card-content p {
+            font-size: 0.9rem;
+            color: var(--secondary-text);
+            margin-bottom: 1rem;
+        }
+        
+        .date {
+            font-size: 0.8rem;
+            color: var(--secondary-text);
+            opacity: 0.7;
+        }
+    </style>
 </BaseLayout>

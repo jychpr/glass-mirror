@@ -1,11 +1,19 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 const { frontmatter } = Astro.props;
+
+// LOGIC: If frontmatter has an image, use it. Otherwise, use default.
+// If you DON'T want a huge placeholder on the specific blog post page, 
+// you can skip this step and keep your original "&&" code. 
+// But if you want consistency, use this:
+const heroImage = frontmatter.image?.url || '/glass-mirror/images/test.jpg';
+const heroAlt = frontmatter.image?.alt || 'Article header';
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-    
     <article class="blog-post">
+        <img src={heroImage} alt={heroAlt} class="hero-image" />
+
         <h1>{frontmatter.title}</h1>
         <div class="meta">
             <span>By {frontmatter.author}</span> • 
@@ -22,6 +30,15 @@ const { frontmatter } = Astro.props;
 </BaseLayout>
 
 <style>
+    /* Add this to your existing styles */
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    /* ... existing styles ... */
     /* Scoped CSS: This only affects this file */
     .meta {
         color: #666;
