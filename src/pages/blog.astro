@@ -2,8 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "Blog";
 
-// This is the magic. It fetches all markdown files from the folder.
 const allPosts = await Astro.glob('./posts/*.md');
+
+// FILTERING LOGIC: Only show "blog" posts
+const blogs = allPosts.filter((post) => post.frontmatter.tags?.includes('blog'));
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -11,7 +13,7 @@ const allPosts = await Astro.glob('./posts/*.md');
     <p>Thoughts on code, simplicity, and structure.</p>
 
     <ul class="link-list">
-        {allPosts.map((post) => (
+        {blogs.map((post) => (
             <li>
                 <span class="label">{post.frontmatter.pubDate.slice(0,10)}</span>
                 <a href={post.url}>{post.frontmatter.title}</a>
