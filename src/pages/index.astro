@@ -7,11 +7,33 @@ const pageTitle = "Glass Mirror";
     <section>
         <h2>About</h2>
         <p>
-            This is my personal corner of the internet. I am building this 
-            from scratch to learn the fundamentals of web development.
-            Now running on Astro.
+            I am a Master's student in EECS at NYCU, specializing in Vision-Language Models 
+            and Robotic Assembly. I build systems that bridge the gap between AI perception 
+            and physical action.
         </p>
+        
+        <div class="cta-container">
+            <a href="/glass-mirror/cv" class="btn-primary">View Full Resume</a>
+        </div>
     </section>
+
+    <style>
+        .cta-container {
+            margin-top: 1.5rem;
+        }
+        .btn-primary {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: opacity 0.2s;
+        }
+        .btn-primary:hover {
+            opacity: 0.8;
+            text-decoration: none;
+        }
+    </style>
 
     <section>
         <h2>Connect</h2>
