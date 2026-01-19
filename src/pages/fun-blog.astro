@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+// 1. Import the new component
+import Card from '../components/Card.astro';
+const pageTitle = "Blog";
+
+const allPosts = await Astro.glob('./posts/*.md');
+// IN fun-blog.astro
+// Filter for "fun", "gaming", "gym", "faith" tags
+const funPosts = allPosts.filter((post) => {
+    const tags = post.frontmatter.tags || [];
+    return tags.some(tag => ['fun', 'gaming', 'gym', 'faith'].includes(tag));
+});
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <h2>Writing</h2>
+    <p>Thoughts on code, simplicity, and structure.</p>
+
+    <div class="card-grid">
+        {funPosts.map((post) => (
+            <Card 
+                url={post.url}
+                image={post.frontmatter.image}
+                title={post.frontmatter.title}
+                body={post.frontmatter.description}
+                date={post.frontmatter.pubDate.slice(0,10)}
+            />
+        ))}
+    </div>
+
+    <style>
+        /* We ONLY keep the Grid layout here. The Card styles are gone! */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+    </style>
+</BaseLayout>
