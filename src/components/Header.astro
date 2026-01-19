@@ -1,18 +1,52 @@
 ---
 import ThemeIcon from './ThemeIcon.astro';
+
+// 1. Get the current path to decide which menu to show
+const pathname = Astro.url.pathname;
+
+// Define what pages belong to the "Fun Universe"
+// Note: We check if the path starts with /glass-mirror/fun, etc.
+const isFunMode = pathname.includes('/fun') || pathname.includes('/gaming') || pathname.includes('/content');
+
+// 2. Define the Link Logic
+const homeLink = isFunMode ? "/glass-mirror/fun" : "/glass-mirror/";
+const switchLink = isFunMode ? "/glass-mirror/" : "/glass-mirror/fun";
+const switchText = isFunMode ? "Go Professional 👔" : "Go Fun Mode 🎮";
 ---
+
 <header>
     <div class="header-top">
-        <h1>Your Name</h1>
-        <ThemeIcon />
+        <h1>Joy Chrissetyo</h1>
+        <div class="controls">
+            <a href={switchLink} class="mode-switch">{switchText}</a>
+            <ThemeIcon />
+        </div>
     </div>
-    <p>Software Engineer / Learner / Human</p>
+    
+    <p>
+        {isFunMode ? "Gamer / Gym Rat / Believer" : "Software Engineer / Learner / Human"}
+    </p>
+
     <nav>
-        <a href="/glass-mirror/">Home</a>
-        <a href="/glass-mirror/projects">Projects</a>
-        <a href="/glass-mirror/blog">Blog</a>
-        <a href="/glass-mirror/tils">TILs</a>
-        <a href="/glass-mirror/cv" target="_blank">Resume</a>
+        {/* CONDITIONAL RENDERING: Show different links based on mode */}
+        {isFunMode ? (
+            /* === FUN MENU === */
+            <>
+                <a href="/glass-mirror/fun">Fun Home</a>
+                <a href="/glass-mirror/gaming">Gaming</a>
+                <a href="/glass-mirror/content">Content</a>
+                <a href="/glass-mirror/fun-blog">Random Blogs</a>
+            </>
+        ) : (
+            /* === PRO MENU === */
+            <>
+                <a href="/glass-mirror/">Home</a>
+                <a href="/glass-mirror/projects">Projects</a>
+                <a href="/glass-mirror/blog">Blog</a>
+                <a href="/glass-mirror/tils">TILs</a>
+                <a href="/glass-mirror/cv" target="_blank">Resume</a>
+            </>
+        )}
     </nav>
 </header>
 
@@ -22,7 +56,25 @@ import ThemeIcon from './ThemeIcon.astro';
         justify-content: space-between;
         align-items: center;
     }
-    /* ... keep your existing nav styles ... */
+    .controls {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+    .mode-switch {
+        font-size: 0.8rem;
+        background: var(--text-color);
+        color: var(--bg-color);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+    .mode-switch:hover {
+        opacity: 0.8;
+        text-decoration: none;
+    }
+    
+    /* Nav Styles */
     nav { margin-top: 1rem; }
     nav a { margin-right: 1rem; color: var(--text-color); font-weight: bold; }
     nav a:hover { color: var(--accent-color); }

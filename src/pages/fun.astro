@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Glass Mirror";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <section>
+        <h2>About My Other Side</h2>
+        <p>
+            I likes to play games and sometimes I also do content creation as well.
+            I routinely go to gym to maintain my physical form and to be healthy.
+            A proud Christian.
+        </p>
+    </section>
+
+    <style>
+        .cta-container {
+            margin-top: 1.5rem;
+        }
+        .btn-primary {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: opacity 0.2s;
+        }
+        .btn-primary:hover {
+            opacity: 0.8;
+            text-decoration: none;
+        }
+    </style>
+
+    <section>
+        <h2>Connect</h2>
+        <ul class="link-list">
+            <li>
+                <span class="label">Steam</span>
+                <a href="https://steamcommunity.com/id/katzeowo/" target="_blank">7akihito</a>
+            </li>
+            <li>
+                <span class="label">Youtube</span>
+                <a href="#" target="_blank">@yourhandle</a>
+            </li>
+            <li>
+                <span class="label">Twitch</span>
+                <a href="mailto:your@email.com">Send Hi</a>
+            </li>
+        </ul>
+    </section>
+
+</BaseLayout>
