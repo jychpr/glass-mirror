@@ -5,27 +5,21 @@ import CVLayout from '../layouts/CVLayout.astro';
 <CVLayout pageTitle="Resume - Joy Chrissetyo Prajogo">
     
     <section class="cv-section">
-        <header class="cv-header-flex">
-            <div class="header-text">
-                <h1>Joy Chrissetyo Prajogo <span class="chinese-name">王智豪</span></h1>
-                <div class="contact-info">
-                    <p>East District, Hsinchu City, 300093, Republic of China (Taiwan)</p>
-                    <p>
-                        +886972948350 |
-                        <a href="mailto:joy.chr.pr@gmail.com">joy.chr.pr@gmail.com</a>
-                    </p>
-                    <p>
-                        <a href="https://linkedin.com/in/joychrissetyoprajogo/">linkedin.com/in/joychrissetyoprajogo</a> | 
-                        <a href="https://github.com/jychpr">github.com/jychpr</a>
-                    </p>
-                </div>
-            </div>
-            
-            <div class="header-photo">
-                <img src="/glass-mirror/images/pro-profile.jpg" alt="Joy Chrissetyo" />
+        <header class="cv-header">
+            <h1>Joy Chrissetyo Prajogo <span class="chinese-name">王智豪</span></h1>
+            <div class="contact-info">
+                <p>East District, Hsinchu City, 300093, Republic of China (Taiwan)</p>
+                <p>
+                    +886972948350 |
+                    <a href="mailto:joy.chr.pr@gmail.com">joy.chr.pr@gmail.com</a>
+                </p>
+                <p>
+                    <a href="https://linkedin.com/in/joychrissetyoprajogo/">linkedin.com/in/joychrissetyoprajogo</a> | 
+                    <a href="https://github.com/jychpr">github.com/jychpr</a>
+                </p>
             </div>
         </header>
-
+        
         <div class="section-block">
             <h2>Formal Education</h2>
             <div class="item">
@@ -256,26 +250,6 @@ import CVLayout from '../layouts/CVLayout.astro';
                 </p>
             </div>
         </header>
-        <header class="cv-header-flex">
-            <div class="header-text">
-                <h1>Joy Chrissetyo Prajogo <span class="chinese-name">王智豪</span></h1>
-                <div class="contact-info">
-                    <p>中華民國(臺灣) 300093 新竹市東區</p>
-                    <p>
-                        +886972948350 |
-                        <a href="mailto:joy.chr.pr@gmail.com">joy.chr.pr@gmail.com</a>
-                    </p>
-                    <p>
-                        <a href="https://linkedin.com/in/joychrissetyoprajogo/">linkedin.com/in/joychrissetyoprajogo</a> | 
-                        <a href="https://github.com/jychpr">github.com/jychpr</a>
-                    </p>
-                </div>
-            </div>
-            
-            <div class="header-photo">
-                <img src="/glass-mirror/images/pro-profile.jpg" alt="Joy Chrissetyo" />
-            </div>
-        </header>
 
         <div class="section-block">
             <h2>正規教育</h2>
@@ -492,92 +466,48 @@ import CVLayout from '../layouts/CVLayout.astro';
 </CVLayout>
 
 <style>
-    /* === NEW HEADER STYLES (Photo + Text) === */
-    .cv-header-flex {
-        display: flex;
-        justify-content: space-between; /* Pushes text left, photo right */
-        align-items: flex-start;
-        margin-bottom: 20px;
-        border-bottom: 2px solid #333; /* Adds a professional separator line */
-        padding-bottom: 15px;
-    }
-
-    .header-text {
-        text-align: left;
-        max-width: 75%; /* Gives space for the photo */
-    }
-
-    .header-photo img {
-        width: 3.5cm; /* Standard passport width */
-        height: 4.5cm; /* Standard passport height */
-        object-fit: cover;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        margin-left: 15px;
-        background-color: #f0f0f0; /* Fallback color if image loads slow */
-    }
-
-    .contact-info p { 
-        margin: 2px 0; 
-        font-size: 10pt; 
-        color: #444;
-        text-align: left; /* Force left alignment */
-    }
-    
-    .contact-info a { 
-        color: #000; 
-        text-decoration: none; 
-        border-bottom: 1px dotted #000; 
-    }
-
-    /* === TYPOGRAPHY (Optimized) === */
-    h1 { 
-        margin: 0; 
-        font-size: 18pt; 
-        text-transform: uppercase; 
+    /* LOCAL STYLES FOR CONTENT */
+    h1 {
+        margin: 0;
+        font-size: 18pt; /* Optimized for A4 to prevent wrapping */
+        text-transform: uppercase;
         letter-spacing: 1px;
         line-height: 1.2;
     }
-    
-    .chinese-name { 
-        font-weight: normal; 
-        margin-left: 10px; 
+    h2 {
+        font-size: 14pt;
+        border-bottom: 2px solid #333;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
     }
+    h3 { margin: 0; font-size: 11pt; font-weight: bold; }
 
-    h2 { 
-        font-size: 14pt; 
-        border-bottom: 2px solid #333; 
-        margin-top: 15px; 
-        margin-bottom: 10px; 
-        text-transform: uppercase; 
-    }
-    
-    h3 { 
-        margin: 0; 
-        font-size: 11pt; 
-        font-weight: bold; 
-    }
-    
-    /* === CONTENT BLOCKS === */
+    .chinese-name { font-weight: normal; margin-left: 10px; }
+    .cv-header { text-align: center; margin-bottom: 20px; }
+    .contact-info p { margin: 2px 0; font-size: 10pt; color: #444; }
+    .contact-info a { color: #000; text-decoration: none; border-bottom: 1px dotted #000; }
+
     .item { margin-bottom: 12px; }
     .row { display: flex; justify-content: space-between; align-items: baseline; }
     .date { font-size: 10pt; font-weight: bold; }
     .sub { margin: 2px 0; font-style: italic; font-size: 10pt; }
     .desc { margin: 2px 0; font-size: 10pt; }
-    
+
     .details { margin: 4px 0 0 18px; padding: 0; font-size: 10pt; }
     .details li { margin-bottom: 2px; }
-    
+
     .skills { font-size: 10pt; line-height: 1.4; }
 
     .language-divider { margin: 40px 0; border: 0; border-top: 1px dashed #ccc; }
-    
-    /* === PRINT OVERRIDES === */
+
+    /* PRINT BREAKS */
     @media print {
         .page-break { page-break-before: always; }
         .language-divider { display: none; }
         h2 { -webkit-print-color-adjust: exact; border-bottom: 2px solid black !important; }
-        
+        /* Ensure links don't show blue/underline in print if preferred,
+        or keep them to show they are clickable in PDF */
         a { text-decoration: none; color: black; border: none; }
     }
 </style>
