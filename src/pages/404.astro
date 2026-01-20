@@ -1,75 +1,143 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
 ---
 
-<BaseLayout pageTitle="404 - Lost in the Mirror">
-    <div class="centered">
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>404 - Lost in the Mirror</title>
+    
+    <script is:inline>
+        const theme = (() => {
+            if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+                return localStorage.getItem('theme');
+            }
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light';
+        })();
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body>
+    <div class="centered-container">
         <h1>404</h1>
-        <p>You have wandered off the path.</p>
-        <p class="sub">This page does not exist in the reflection.</p>
+        <p class="message">You have wandered off the path.</p>
+        <p class="sub-message">This page does not exist in the reflection.</p>
         
         <div class="actions">
-            <a href="/glass-mirror/" class="btn-primary">Return to Pro Side 👔</a>
-            <a href="/glass-mirror/fun" class="btn-secondary">Return to Fun Side 🎮</a>
+            <a href="/glass-mirror/" id="btn-pro" class="btn">
+                Return to Pro Side 👔
+            </a>
+            <a href="/glass-mirror/fun" id="btn-fun" class="btn">
+                Return to Fun Side 🎮
+            </a>
         </div>
     </div>
 
+    <script>
+        // Get the current URL from the browser window
+        const path = window.location.pathname;
+        
+        // Define what counts as "Fun Side"
+        const isFun = path.includes('/fun') || path.includes('/gaming') || path.includes('/content');
+        
+        const proBtn = document.getElementById('btn-pro');
+        const funBtn = document.getElementById('btn-fun');
+
+        if (isFun) {
+            // If we are in Fun Mode -> Make Fun button BIG
+            funBtn.classList.add('primary-btn');
+            proBtn.classList.add('secondary-btn');
+        } else {
+            // Default or Pro Mode -> Make Pro button BIG
+            proBtn.classList.add('primary-btn');
+            funBtn.classList.add('secondary-btn');
+        }
+    </script>
+
     <style>
-        .centered {
-            text-align: center;
-            margin-top: 4rem;
+        body {
+            /* Ensure the background matches the theme */
+            background-color: var(--bg-color);
+            color: var(--text-color);
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        }
+
+        .centered-container {
+            text-align: center;
+            padding: 2rem;
         }
 
         h1 {
-            font-size: 6rem;
+            font-size: 8rem;
             margin: 0;
             line-height: 1;
-            color: var(--text-color);
+            opacity: 0.1; /* Subtle ghost look */
         }
 
-        p {
-            font-size: 1.2rem;
-            margin: 0.5rem 0;
-            color: var(--text-color);
+        .message {
+            font-size: 1.5rem;
+            margin-top: -2rem; /* Pull it up over the giant 404 */
+            font-weight: bold;
         }
         
-        .sub {
-            font-size: 0.9rem;
+        .sub-message {
             color: var(--secondary-text);
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .actions {
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            gap: 1.5rem;
             justify-content: center;
+            align-items: center; /* Center them vertically */
+            flex-wrap: wrap;
         }
 
-        .btn-primary, .btn-secondary {
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
+        .btn {
             text-decoration: none;
-            transition: opacity 0.2s;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
-        .btn-primary {
+        /* 4. DYNAMIC STYLES */
+        
+        /* The "Chosen" Button (Bigger, Filled) */
+        :global(.primary-btn) {
             background-color: var(--text-color);
             color: var(--bg-color);
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            transform: scale(1.1); /* Make it literally bigger */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            order: -1; /* Optional: Moves the big button to the left visually if you want */
         }
 
-        .btn-secondary {
-            border: 2px solid var(--text-color);
+        /* The "Other" Button (Smaller, Outline) */
+        :global(.secondary-btn) {
+            border: 2px solid var(--border-color);
             color: var(--text-color);
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
         }
 
-        .btn-primary:hover, .btn-secondary:hover {
-            opacity: 0.8;
-            text-decoration: none;
+        :global(.secondary-btn:hover) {
+            opacity: 1;
+            border-color: var(--text-color);
         }
     </style>
-</BaseLayout>
+</body>
+</html>
