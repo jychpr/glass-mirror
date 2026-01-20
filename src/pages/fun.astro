@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = "Glass Mirror";
+const pageTitle = "Joy's Fun Corner";
+const pageDescription = "Gaming setup, Gym PRs, and random thoughts on life.";
+const pageImage = "/glass-mirror/images/fun-setup.jpg"; // You need to create this image
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} description={pageDescription} image={pageImage}>
     <section>
         <h2>About My Other Side</h2>
         <p>
@@ -12,24 +14,6 @@ const pageTitle = "Glass Mirror";
             A proud Christian.
         </p>
     </section>
-
-    <style>
-        .cta-container {
-            margin-top: 1.5rem;
-        }
-        .btn-primary {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: opacity 0.2s;
-        }
-        .btn-primary:hover {
-            opacity: 0.8;
-            text-decoration: none;
-        }
-    </style>
 
     <section>
         <h2>Connect</h2>
@@ -44,7 +28,7 @@ const pageTitle = "Glass Mirror";
             </li>
             <li>
                 <span class="label">Twitch</span>
-                <a href="mailto:your@email.com">Send Hi</a>
+                <a href="https://twitch.tv/7akihito" target="_blank">@7akihito</a>
             </li>
         </ul>
     </section>
