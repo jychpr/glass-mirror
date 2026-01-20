@@ -8,7 +8,7 @@ import CVLayout from '../layouts/CVLayout.astro';
         <header class="cv-header">
             <h1>Joy Chrissetyo Prajogo <span class="chinese-name">王智豪</span></h1>
             <div class="contact-info">
-                <p>Hsinchu City, Taiwan | +886 972 948 350</p>
+                <p>East District, Hsinchu City, Taiwan | +886 972 948 350</p>
                 <p>
                     <a href="mailto:joy.chr.pr@gmail.com">joy.chr.pr@gmail.com</a> | 
                     <a href="https://linkedin.com/in/joychrissetyoprajogo/">LinkedIn</a> | 
@@ -36,6 +36,9 @@ import CVLayout from '../layouts/CVLayout.astro';
                     <span class="date">Aug 2018 - Aug 2022</span>
                 </div>
                 <p class="sub">B.Eng. in Information Engineering | CGPA: 3.65/4.00 (Cum Laude)</p>
+                <ul class="details">
+                    <li><strong>Thesis:</strong> Online Lectures Monitoring Software Component Development.</li>
+                </ul>
             </div>
         </div>
 
@@ -48,7 +51,7 @@ import CVLayout from '../layouts/CVLayout.astro';
                 </div>
                 <ul class="details">
                     <li>Developed system architecture for LINE Bot with ChatGPT in Azure cloud.</li>
-                    <li>Managed laboratory AI computing servers.</li>
+                    <li>Managed laboratory AI computing servers (Admin).</li>
                     <li>Researching integrated vision systems utilizing Vision-Language Models (VLM).</li>
                 </ul>
             </div>
@@ -74,12 +77,20 @@ import CVLayout from '../layouts/CVLayout.astro';
                 <h3>Robotic Generative AI 3-Cup and Ball Game</h3>
                 <p class="desc">Developed vision system using YOLOv7 and SORT algorithm. Showcased at Intelligent Asia 2024.</p>
             </div>
+            <div class="item">
+                <h3>Simple Video Stabilizer</h3>
+                <p class="desc">Created a Python program using OpenCV/Numpy. Implemented corner detection and optical flow to calculate and smooth jitter displacement.</p>
+            </div>
+            <div class="item">
+                <h3>Ultrasound Image Segmentation and Classification</h3>
+                <p class="desc">Implemented U-Net for segmentation and DenseNet201 for classification of cancer/tumor regions using TensorFlow.</p>
+            </div>
         </div>
 
         <div class="section-block">
             <h2>Skills</h2>
             <p class="skills">
-                <strong>Tech:</strong> Python, C/C++, SQL, Computer Vision (OpenCV, PyTorch), NLP, Docker, Azure.<br>
+                <strong>Tech:</strong> Python, C/C++, SQL, Computer Vision (OpenCV, PyTorch), NLP, Docker, Azure, Deep Learning.<br>
                 <strong>Languages:</strong> Indonesian (Native), English (C1), Chinese (TOCFL A1), German.
             </p>
         </div>
@@ -92,7 +103,7 @@ import CVLayout from '../layouts/CVLayout.astro';
         <header class="cv-header">
             <h1>Joy Chrissetyo Prajogo <span class="chinese-name">王智豪</span></h1>
             <div class="contact-info">
-                <p>中華民國(臺灣) 新竹市 | +886 972 948 350</p>
+                <p>中華民國(臺灣) 新竹市東區 | +886 972 948 350</p>
                 <p>joy.chr.pr@gmail.com</p>
             </div>
         </header>
@@ -102,7 +113,7 @@ import CVLayout from '../layouts/CVLayout.astro';
             <div class="item">
                 <div class="row">
                     <h3>國立陽明交通大學 (NYCU)</h3>
-                    <span class="date">2024年2月 - 2026年2月</span>
+                    <span class="date">2024年2月 - 2026年2月 (預計)</span>
                 </div>
                 <p class="sub">電機資訊國際碩士學位學程 (EECS) | CGPA: 4.04/4.30</p>
                 <ul class="details">
@@ -154,12 +165,20 @@ import CVLayout from '../layouts/CVLayout.astro';
                 <h3>機器人生成式 AI 三杯球賽</h3>
                 <p class="desc">開發視覺系統 (YOLOv7 + SORT) 追蹤杯球。於 2024 智慧亞洲展 (Intelligent Asia) 展出。</p>
             </div>
+            <div class="item">
+                <h3>簡單的視訊穩定器</h3>
+                <p class="desc">使用 OpenCV 和 Numpy 創建程式。實作角點偵測與光流法來計算抖動位移並消除不穩定。</p>
+            </div>
+            <div class="item">
+                <h3>超音波影像分割和分類</h3>
+                <p class="desc">利用 U-Net 架構分割癌症和腫瘤區域，並使用 DenseNet201 進行分類 (Tensorflow)。</p>
+            </div>
         </div>
 
         <div class="section-block">
             <h2>技能</h2>
             <p class="skills">
-                <strong>技術:</strong> Python, C/C++, SQL, Computer Vision, NLP, Deep Learning, Docker.<br>
+                <strong>技術:</strong> Python, C/C++, SQL, Computer Vision (OpenCV, PyTorch), NLP, Docker, Azure.<br>
                 <strong>語言:</strong> 印尼語 (母語), 英語 (C1), 中文 (TOCFL A1), 德語.
             </p>
         </div>
@@ -171,10 +190,10 @@ import CVLayout from '../layouts/CVLayout.astro';
     /* LOCAL STYLES FOR CONTENT */
     h1 { 
         margin: 0; 
-        font-size: 18pt; /* Reduced from 24pt to fit A4 */
+        font-size: 18pt; /* Optimized for A4 to prevent wrapping */
         text-transform: uppercase; 
         letter-spacing: 1px;
-        line-height: 1.2; /* Better spacing if it does wrap */
+        line-height: 1.2;
     }
     h2 { 
         font-size: 14pt; 
@@ -208,5 +227,9 @@ import CVLayout from '../layouts/CVLayout.astro';
         .page-break { page-break-before: always; }
         .language-divider { display: none; }
         h2 { -webkit-print-color-adjust: exact; border-bottom: 2px solid black !important; }
+        
+        /* Ensure links don't show blue/underline in print if preferred, 
+           or keep them to show they are clickable in PDF */
+        a { text-decoration: none; color: black; border: none; }
     }
 </style>
