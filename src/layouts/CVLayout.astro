@@ -24,7 +24,7 @@ const { pageTitle } = Astro.props;
 </html>
 
 <style is:global>
-    /* === SCREEN STYLES (Unchanged) === */
+    /* === SCREEN STYLES === */
     body.cv-mode {
         background-color: #525659;
         margin: 0;
@@ -76,11 +76,11 @@ const { pageTitle } = Astro.props;
         text-decoration: underline;
     }
 
-    /* === PRINT STYLES (Flow Logic) === */
+    /* === PRINT STYLES === */
     @media print {
         @page {
-            /* 25mm (approx 1 inch) is standard for Resume Top/Bottom Margins */
-            margin: 25mm 20mm; 
+            /* REVERTED TO 15mm (Your preferred spacing) */
+            margin: 15mm 20mm; 
             size: A4;
         }
         
@@ -98,14 +98,18 @@ const { pageTitle } = Astro.props;
             border: none;
         }
 
-        /* Keep Chinese section on a new page */
+        /* === FIXING THE BLANK PAGE === */
+        /* 1. We disable the manual page break div to prevent double-breaks */
+        .page-break {
+            display: none;
+        }
+
+        /* 2. We let the Chinese Section handle the break alone */
         .chinese-version {
             page-break-before: always;
+            padding-top: 0;
         }
-        
-        .page-break {
-            page-break-before: always;
-        }
+        /* ============================ */
 
         .no-print {
             display: none !important;
@@ -116,15 +120,12 @@ const { pageTitle } = Astro.props;
             print-color-adjust: exact !important;
         }
         
-        /* === THE FIX === */
-        /* We removed 'break-inside: avoid'. 
-           Now items will flow naturally to the next page. */
+        /* Allow natural flowing text */
         .section-block, .item {
             break-inside: auto;
         }
         
         h2 {
-            /* We still want to avoid a Headline sitting alone at the bottom of a page */
             break-after: avoid;
         }
     }
