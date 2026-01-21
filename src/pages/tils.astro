@@ -6,6 +6,9 @@ const allPosts = await Astro.glob('./posts/*.md');
 
 // FILTERING LOGIC
 const tils = allPosts.filter((post) => post.frontmatter.tags?.includes('til'));
+
+// Add this line
+tils.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate));
 ---
 
 <BaseLayout pageTitle={pageTitle}>
