@@ -1,13 +1,13 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
-title: 'Reviewing the New Framework'
+title: 'Hogwarts'
 pubDate: 2026-01-20
 description: 'My thoughts on the latest update.'
 author: 'Joy Chrissetyo'
 tags: ["content"]
 # IMPORTANT: Use 'externalLink' if you want the card to go straight to YouTube
-externalLink: 'https://youtube.com/watch?v=...' 
+externalLink: 'https://youtu.be/hZQiT4QVkV8' 
 image:
-    url: '/glass-mirror/images/yt-thumb.jpg'
+    url: '/glass-mirror/images/test.jpg'
     alt: 'YouTube Thumbnail'
 ---
