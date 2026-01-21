@@ -6,6 +6,9 @@ const pageTitle = "Blog";
 
 const allPosts = await Astro.glob('./posts/*.md');
 const blogs = allPosts.filter((post) => post.frontmatter.tags?.includes('blog'));
+
+// Add this line immediately after filtering
+blogs.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate));
 ---
 
 <BaseLayout pageTitle={pageTitle}>
