@@ -1,22 +1,29 @@
 ---
-// src/components/Card.astro
-const { url, image, title, body, date } = Astro.props;
+/* src/components/Card.astro */
+const { title, url, image, body, date } = Astro.props;
 
-// Logic for the fallback image happens INSIDE the component now.
-// This means every page using this Card gets this safety net automatically.
-const imageSrc = image?.url || '/glass-mirror/images/test.jpg';
-const imageAlt = image?.alt || 'Thumbnail';
+// === THE SMART LOGIC ===
+// 1. Check if the URL starts with "http" (External) or "/" (Internal)
+const isExternal = url.startsWith('http');
+
+// 2. Set the target based on that check
+const target = isExternal ? "_blank" : "_self";
+
+// 3. Security best practice for new tabs (prevents tab-napping)
+const rel = isExternal ? "noopener noreferrer" : "";
 ---
 
-<a href={url} class="card">
-    <div class="card-image">
-        <img src={imageSrc} alt={imageAlt} />
-    </div>
+<a href={url} class="card" target={target} rel={rel}>
     
+    <div class="card-image">
+        {image && <img src={image.url} alt={image.alt} />}
+    </div>
     <div class="card-content">
-        <h3>{title}</h3>
+        <div class="card-header">
+            <h3>{title}</h3>
+            {date && <span class="date">{date}</span>}
+        </div>
         <p>{body}</p>
-        {date && <span class="date">{date}</span>}
     </div>
 </a>
 
