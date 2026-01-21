@@ -1,21 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-// 1. Import the new component
 import Card from '../components/Card.astro';
-const pageTitle = "Blog";
+const pageTitle = "Joy's Random Thoughts"; // Tweaked title
 
 const allPosts = await Astro.glob('./posts/*.md');
-// IN fun-blog.astro
-// Filter for "fun", "gaming", "gym", "faith" tags
+
+// 1. FILTER: "fun", "gaming", "gym", "faith"
 const funPosts = allPosts.filter((post) => {
     const tags = post.frontmatter.tags || [];
     return tags.some(tag => ['fun', 'gaming', 'gym', 'faith'].includes(tag));
 });
+
+// 2. SORT: Newest First
+funPosts.sort((a, b) => {
+    return new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf();
+});
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <h2>Writing</h2>
-    <p>Thoughts on code, simplicity, and structure.</p>
+    <h2>Writing & Rants</h2>
+    <p>Thoughts on gaming, lifting, and the walk of faith.</p>
 
     <div class="card-grid">
         {funPosts.map((post) => (
@@ -30,7 +34,6 @@ const funPosts = allPosts.filter((post) => {
     </div>
 
     <style>
-        /* We ONLY keep the Grid layout here. The Card styles are gone! */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

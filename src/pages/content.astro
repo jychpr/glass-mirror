@@ -1,19 +1,41 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Card from '../components/Card.astro'; // Reuse your component!
+import Card from '../components/Card.astro';
 const pageTitle = "Content Creation";
+
+const allPosts = await Astro.glob('./posts/*.md');
+
+// 1. FILTER: Only posts tagged "content"
+const contentPosts = allPosts.filter((post) => post.frontmatter.tags?.includes('content'));
+
+// 2. SORT: Newest First
+contentPosts.sort((a, b) => {
+    return new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf();
+});
 ---
+
 <BaseLayout pageTitle={pageTitle}>
     <h1>Content Creation</h1>
+    <p>Videos, Streams, and Digital Creations.</p>
+
     <div class="card-grid">
-        <Card 
-            url="https://youtube.com/..."
-            title="My Latest Video"
-            body="Reviewing the new framework."
-            image={{ url: '/glass-mirror/images/yt-thumb.jpg', alt: 'YT' }}
-        />
+        {contentPosts.map((post) => (
+            <Card 
+                url={post.frontmatter.externalLink || post.url} 
+                image={post.frontmatter.image}
+                title={post.frontmatter.title}
+                body={post.frontmatter.description}
+                date={post.frontmatter.pubDate.slice(0,10)}
+            />
+        ))}
     </div>
+
     <style>
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .card-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 2rem; 
+            margin-top: 2rem;
+        }
     </style>
 </BaseLayout>

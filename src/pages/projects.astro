@@ -1,11 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-// 1. Import the new component
 import Card from '../components/Card.astro';
 const pageTitle = "Projects";
 
 const allPosts = await Astro.glob('./posts/*.md');
+
+// 1. FILTER: Get only projects
 const projects = allPosts.filter((post) => post.frontmatter.tags?.includes('project'));
+
+// 2. SORT: Newest First (Descending Order)
+projects.sort((a, b) => {
+    return new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf();
+});
 ---
 
 <BaseLayout pageTitle={pageTitle}>
