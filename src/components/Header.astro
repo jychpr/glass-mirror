@@ -61,24 +61,42 @@ const tagline = isFun ? "You found my other side!" : "Hello World!";
 <script is:inline define:vars={{ isFun }}>
     if (isFun) {
         const names = ['7Akihito', 'Akihito', 'kXatze', 'FriendzoneD'];
-        let index = 0;
         const logo = document.getElementById('logo-text');
 
         if (logo) {
+            // 1. RECOVER STATE
+            // Check if we have a saved index in the browser's Session Storage
+            let storedIndex = sessionStorage.getItem('gamerTagIndex');
+            let index = storedIndex ? parseInt(storedIndex) : 0;
+
+            // Safety check: ensure index is valid (in case you changed the list of names)
+            if (index >= names.length) index = 0;
+
+            // 2. SET INITIAL STATE IMMEDIATELY
+            // This prevents it from flashing "7Akihito" before switching to the correct name
+            logo.innerText = names[index];
+
+            // 3. START THE LOOP
             setInterval(() => {
-                // 1. Fade Out
+                // Fade Out
                 logo.style.opacity = '0';
                 
                 setTimeout(() => {
-                    // 2. Change Text
+                    // Update Index
                     index = (index + 1) % names.length;
+                    
+                    // Update Text
                     logo.innerText = names[index];
                     
-                    // 3. Fade In
+                    // Fade In
                     logo.style.opacity = '1';
-                }, 500); // Wait 0.5s for fade out to finish
+                    
+                    // 4. SAVE STATE
+                    // Save the new index so the next page knows where we left off
+                    sessionStorage.setItem('gamerTagIndex', index);
+                }, 500); 
                 
-            }, 3000); // Rotate every 3 seconds
+            }, 3000); 
         }
     }
 </script>
