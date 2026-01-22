@@ -8,6 +8,9 @@ const pageImage = "/glass-mirror/images/pro-profile.jpg";
 <BaseLayout pageTitle={pageTitle} description={pageDescription} image={pageImage}>
     
     <section class="intro-container">
+        
+        <h2 class="section-title">About Me</h2>
+
         <div class="spec-sheet">
             
             <div class="row">
@@ -69,34 +72,42 @@ const pageImage = "/glass-mirror/images/pro-profile.jpg";
     <style>
         .intro-container {
             margin-top: 2rem;
-            font-family: 'Courier New', Courier, monospace; /* Adds that "Terminal" vibe */
+            font-family: 'Courier New', Courier, monospace; 
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            border-bottom: 2px solid var(--border-color); /* Optional underline */
+            padding-bottom: 0.5rem;
+            width: 100%;
         }
 
         /* THE GRID MAGIC */
         .spec-sheet {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem; /* Spacing between rows */
+            gap: 1.2rem; 
             font-size: 1.05rem;
         }
 
         .row {
             display: grid;
-            /* Column 1: Label (Fixed width) | Column 2: Arrow | Column 3: Value (Takes rest) */
             grid-template-columns: 120px 30px 1fr; 
             align-items: baseline;
         }
 
         .label {
             font-weight: bold;
-            color: var(--secondary-text); /* Slightly dimmed */
+            color: var(--secondary-text); 
             opacity: 0.8;
         }
 
         .arrow {
             color: var(--text-color);
             opacity: 0.5;
-            user-select: none; /* User can't accidentally select the arrow */
+            user-select: none; 
         }
 
         .value {
@@ -111,7 +122,7 @@ const pageImage = "/glass-mirror/images/pro-profile.jpg";
 
         .link-highlight {
             text-decoration: underline;
-            text-decoration-style: dotted; /* Looks classier than standard underline */
+            text-decoration-style: dotted; 
             text-underline-offset: 4px;
             color: var(--text-color);
         }
@@ -130,16 +141,17 @@ const pageImage = "/glass-mirror/images/pro-profile.jpg";
 
         .divider {
             height: 1px;
-            background: var(--border-color); /* Uses your theme border color */
+            background: var(--border-color); 
             opacity: 0.3;
             margin: 0.5rem 0;
         }
 
-        /* BUTTON STYLES */
+        /* BUTTON STYLES - UPDATED TO CENTER */
         .cta-container {
             margin-top: 3rem;
             display: flex;
-            justify-content: flex-start; /* Aligns button to the left to match text */
+            justify-content: center; /* === THIS CENTERS IT === */
+            width: 100%;
         }
 
         .btn-primary {
@@ -150,23 +162,22 @@ const pageImage = "/glass-mirror/images/pro-profile.jpg";
             font-weight: bold;
             text-decoration: none;
             transition: opacity 0.2s, transform 0.1s;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif; /* Keep button font clean */
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
         }
 
         .btn-primary:hover {
             opacity: 0.9;
-            transform: translateY(-2px); /* Subtle lift effect */
+            transform: translateY(-2px); 
         }
 
-        /* MOBILE TWEAK: Stack things if screen is super small */
         @media (max-width: 500px) {
             .row {
-                grid-template-columns: 1fr; /* Stack vertically */
+                grid-template-columns: 1fr; 
                 gap: 0.2rem;
                 margin-bottom: 0.5rem;
             }
             .arrow {
-                display: none; /* Hide arrow on mobile stacking */
+                display: none; 
             }
             .label {
                 font-size: 0.9rem;
