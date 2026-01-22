@@ -2,57 +2,178 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "Joy Chrissetyo - Software Engineer";
 const pageDescription = "Master's student in EECS specializing in Vision-Language Models and Robotics.";
-const pageImage = "/glass-mirror/images/pro-profile.jpg"; // You need to create this image
+const pageImage = "/glass-mirror/images/pro-profile.jpg"; 
 ---
 
 <BaseLayout pageTitle={pageTitle} description={pageDescription} image={pageImage}>
-    <section>
-        <h2>About</h2>
-        <p>
-            I am a Master's student in EECS at NYCU, specializing in Vision-Language Models 
-            and Robotic Assembly. I build systems that bridge the gap between AI perception 
-            and physical action.
-        </p>
-        
+    
+    <section class="intro-container">
+        <div class="spec-sheet">
+            
+            <div class="row">
+                <span class="label">Name</span>
+                <span class="arrow">→</span>
+                <span class="value name-highlight">Joy Chrissetyo Prajogo</span>
+            </div>
+
+            <div class="row">
+                <span class="label">Employment</span>
+                <span class="arrow">→</span>
+                <span class="value">Master's Student in EECS @ NYCU</span>
+            </div>
+
+            <div class="row">
+                <span class="label">From</span>
+                <span class="arrow">→</span>
+                <span class="value">Yogyakarta, Indonesia 🇮🇩</span>
+            </div>
+
+            <div class="row">
+                <span class="label">Location</span>
+                <span class="arrow">→</span>
+                <span class="value">Hsinchu, Taiwan 🇹🇼</span>
+            </div>
+
+            <div class="row">
+                <span class="label">Skillset</span>
+                <span class="arrow">→</span>
+                <span class="value">AI, Computer Vision, Image Processing, VLM</span>
+            </div>
+
+            <div class="row">
+                <span class="label">Reach Out</span>
+                <span class="arrow">→</span>
+                <span class="value">
+                    <a href="mailto:joy.chr.pr@gmail.com" class="link-highlight">Say Hi to me! 👋</a>
+                </span>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="row">
+                <span class="label">Check Also</span>
+                <span class="arrow">→</span>
+                <span class="value social-links">
+                    <a href="https://github.com/jychpr" target="_blank">Github</a> / 
+                    <a href="https://www.kaggle.com/" target="_blank">Kaggle</a>
+                </span>
+            </div>
+
+        </div>
+
         <div class="cta-container">
             <a href="/glass-mirror/cv" class="btn-primary" target="_blank">View Full Resume</a>
         </div>
     </section>
 
     <style>
-        .cta-container {
-            margin-top: 1.5rem;
+        .intro-container {
+            margin-top: 2rem;
+            font-family: 'Courier New', Courier, monospace; /* Adds that "Terminal" vibe */
         }
+
+        /* THE GRID MAGIC */
+        .spec-sheet {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem; /* Spacing between rows */
+            font-size: 1.05rem;
+        }
+
+        .row {
+            display: grid;
+            /* Column 1: Label (Fixed width) | Column 2: Arrow | Column 3: Value (Takes rest) */
+            grid-template-columns: 120px 30px 1fr; 
+            align-items: baseline;
+        }
+
+        .label {
+            font-weight: bold;
+            color: var(--secondary-text); /* Slightly dimmed */
+            opacity: 0.8;
+        }
+
+        .arrow {
+            color: var(--text-color);
+            opacity: 0.5;
+            user-select: none; /* User can't accidentally select the arrow */
+        }
+
+        .value {
+            color: var(--text-color);
+            line-height: 1.4;
+        }
+
+        .name-highlight {
+            font-weight: 800;
+            color: var(--text-color);
+        }
+
+        .link-highlight {
+            text-decoration: underline;
+            text-decoration-style: dotted; /* Looks classier than standard underline */
+            text-underline-offset: 4px;
+            color: var(--text-color);
+        }
+
+        .social-links a {
+            margin-right: 10px;
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .social-links a:hover {
+            border-bottom: 1px solid var(--text-color);
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border-color); /* Uses your theme border color */
+            opacity: 0.3;
+            margin: 0.5rem 0;
+        }
+
+        /* BUTTON STYLES */
+        .cta-container {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: flex-start; /* Aligns button to the left to match text */
+        }
+
         .btn-primary {
             background-color: var(--text-color);
             color: var(--bg-color);
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 24px;
+            border-radius: 4px;
             font-weight: bold;
-            transition: opacity 0.2s;
-        }
-        .btn-primary:hover {
-            opacity: 0.8;
             text-decoration: none;
+            transition: opacity 0.2s, transform 0.1s;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif; /* Keep button font clean */
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px); /* Subtle lift effect */
+        }
+
+        /* MOBILE TWEAK: Stack things if screen is super small */
+        @media (max-width: 500px) {
+            .row {
+                grid-template-columns: 1fr; /* Stack vertically */
+                gap: 0.2rem;
+                margin-bottom: 0.5rem;
+            }
+            .arrow {
+                display: none; /* Hide arrow on mobile stacking */
+            }
+            .label {
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
         }
     </style>
-
-    <section>
-        <h2>Connect</h2>
-        <ul class="link-list">
-            <li>
-                <span class="label">GitHub</span>
-                <a href="https://github.com/jychpr" target="_blank">@jychpr</a>
-            </li>
-            <li>
-                <span class="label">Twitter</span>
-                <a href="#" target="_blank">@yourhandle</a>
-            </li>
-            <li>
-                <span class="label">Email</span>
-                <a href="mailto:your@email.com">Send Hi</a>
-            </li>
-        </ul>
-    </section>
 
 </BaseLayout>
