@@ -1,25 +1,32 @@
 ---
 import ThemeIcon from './ThemeIcon.astro';
 
-// Get current path to decide where the "Switch" button goes
+// 1. PATH LOGIC
+// We must explicitly list EVERY path that belongs to the "Fun Universe"
 const pathname = Astro.url.pathname;
-const isFun = pathname.includes('/fun') || pathname.includes('/gaming');
+const isFun = pathname.includes('/fun') || 
+              pathname.includes('/gaming') || 
+              pathname.includes('/content'); // Added this!
 
-// Logic: If on Fun side, go Pro. If on Pro side, go Fun.
+// 2. SWITCH LOGIC
 const switchTarget = isFun ? '/glass-mirror/' : '/glass-mirror/fun';
-const switchLabel = isFun ? "Switch to Pro" : "Switch to Fun"; // For accessibility only
+const switchLabel = isFun ? "Switch to Pro" : "Switch to Fun";
+
+// 3. TAGLINE LOGIC
+const tagline = isFun ? "You found my other side!" : "Hello World!";
 ---
 
 <header>
     <div class="header-content">
         <div class="brand">
-            <a href="/glass-mirror/" class="logo">jychpr</a>
-            <span class="tagline">Hello World!</span>
+            <a href={isFun ? "/glass-mirror/fun" : "/glass-mirror/"} class="logo" id="logo-text">
+                {isFun ? "7Akihito" : "jychpr"}
+            </a>
+            <span class="tagline fade-in">{tagline}</span>
         </div>
 
         <div class="controls">
             <ThemeIcon />
-            
             <a href={switchTarget} class="switch-btn" aria-label={switchLabel} title="Switch Personality">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M7 10h14l-4-4"/>
@@ -31,24 +38,50 @@ const switchLabel = isFun ? "Switch to Pro" : "Switch to Fun"; // For accessibil
 
     <nav>
         {isFun ? (
-            /* Fun Links */
+            /* === FUN MENU === */
             <div class="nav-links">
                 <a href="/glass-mirror/fun">Home</a>
-                <a href="/glass-mirror/content">Content</a>
-                <a href="/glass-mirror/fun-blog">Blog</a>
+                <a href="/glass-mirror/gaming">Gaming</a>
+                <a href="/glass-mirror/content">Contents</a>
+                <a href="/glass-mirror/fun-blog">Random Blogs</a>
             </div>
         ) : (
-            /* Pro Links */
+            /* === PRO MENU === */
             <div class="nav-links">
                 <a href="/glass-mirror/">Home</a>
                 <a href="/glass-mirror/projects">Projects</a>
-                <a href="/glass-mirror/posts">Blog</a>
+                <a href="/glass-mirror/blog">Blog</a> 
                 <a href="/glass-mirror/tils">TILs</a>
-                <a href="/glass-mirror/cv">Resume</a>
+                <a href="/glass-mirror/cv" target="_blank">Resume</a>
             </div>
         )}
     </nav>
 </header>
+
+<script is:inline define:vars={{ isFun }}>
+    if (isFun) {
+        const names = ['7Akihito', 'Akihito', 'kXatze', 'FriendzoneD'];
+        let index = 0;
+        const logo = document.getElementById('logo-text');
+
+        if (logo) {
+            setInterval(() => {
+                // 1. Fade Out
+                logo.style.opacity = '0';
+                
+                setTimeout(() => {
+                    // 2. Change Text
+                    index = (index + 1) % names.length;
+                    logo.innerText = names[index];
+                    
+                    // 3. Fade In
+                    logo.style.opacity = '1';
+                }, 500); // Wait 0.5s for fade out to finish
+                
+            }, 3000); // Rotate every 3 seconds
+        }
+    }
+</script>
 
 <style>
     header {
@@ -63,7 +96,6 @@ const switchLabel = isFun ? "Switch to Pro" : "Switch to Fun"; // For accessibil
         margin-bottom: 1rem;
     }
 
-    /* === REBRANDING STYLES === */
     .brand {
         display: flex;
         flex-direction: column;
@@ -71,28 +103,30 @@ const switchLabel = isFun ? "Switch to Pro" : "Switch to Fun"; // For accessibil
     }
 
     .logo {
-        font-family: 'Courier New', Courier, monospace; /* The "Hacker" Font */
+        font-family: 'Courier New', Courier, monospace;
         font-size: 1.8rem;
         font-weight: 900;
         text-decoration: none;
         color: var(--text-color);
         letter-spacing: -1px;
+        transition: opacity 0.5s ease-in-out; /* Makes the fade effect smooth */
+        min-width: 150px; /* Prevents layout jumping when name length changes */
+        display: inline-block;
     }
 
     .tagline {
         font-family: 'Courier New', Courier, monospace;
         font-size: 0.85rem;
-        color: var(--secondary-text); /* Slightly faded */
+        color: var(--secondary-text);
+        animation: fadeIn 1s ease-in;
     }
 
-    /* === CONTROLS === */
     .controls {
         display: flex;
         align-items: center;
-        gap: 15px; /* Space between Sun/Moon and the Switch */
+        gap: 15px;
     }
 
-    /* The Mystery Switch Button */
     .switch-btn {
         display: flex;
         align-items: center;
@@ -106,12 +140,11 @@ const switchLabel = isFun ? "Switch to Pro" : "Switch to Fun"; // For accessibil
     }
 
     .switch-btn:hover {
-        background-color: var(--secondary-text-bg); /* Subtle highlight */
-        transform: rotate(180deg); /* Fun interaction: It spins when you hover! */
+        background-color: var(--secondary-text-bg);
+        transform: rotate(180deg);
         border: 1px solid var(--border-color);
     }
 
-    /* === NAV LINKS === */
     .nav-links {
         display: flex;
         gap: 1.5rem;
@@ -131,7 +164,11 @@ const switchLabel = isFun ? "Switch to Pro" : "Switch to Fun"; // For accessibil
         border-bottom: 2px solid var(--text-color);
     }
 
-    /* Mobile tweak */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
     @media (max-width: 500px) {
         .logo { font-size: 1.5rem; }
         .nav-links { gap: 1rem; font-size: 0.9rem; }
