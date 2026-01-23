@@ -1,15 +1,207 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = "Gaming Corner";
+const pageTitle = "7Akihito's Command Center";
+const pageDescription = "PC Specs, Peripherals, and Gaming History.";
+const pageImage = "/glass-mirror/images/fun-setup.jpg"; 
 ---
-<BaseLayout pageTitle={pageTitle}>
-    <h1>Gaming</h1>
-    <section>
-        <h2>Currently Playing</h2>
-        <p>Elden Ring, Valorant...</p>
+
+<BaseLayout pageTitle={pageTitle} description={pageDescription} image={pageImage}>
+    
+    <section class="gaming-container">
+        
+        <h1 class="main-title">Command Center</h1>
+        <p class="intro-text">The hardware running the simulation.</p>
+
+        <h2 class="section-title">The Machine (PC Specs)</h2>
+        <div class="spec-sheet">
+            <div class="row">
+                <span class="label">GPU</span>
+                <span class="arrow">→</span>
+                <span class="value">NVIDIA RTX 4090</span>
+            </div>
+            <div class="row">
+                <span class="label">CPU</span>
+                <span class="arrow">→</span>
+                <span class="value">Intel Core i9-13900K</span>
+            </div>
+            <div class="row">
+                <span class="label">RAM</span>
+                <span class="arrow">→</span>
+                <span class="value">64GB DDR5 6000MHz</span>
+            </div>
+            <div class="row">
+                <span class="label">Storage</span>
+                <span class="arrow">→</span>
+                <span class="value">2TB NVMe Samsung 990 Pro</span>
+            </div>
+            <div class="row">
+                <span class="label">Case</span>
+                <span class="arrow">→</span>
+                <span class="value">Lian Li O11 Dynamic</span>
+            </div>
+        </div>
+
+        <h2 class="section-title">The Gear (Peripherals)</h2>
+        <div class="spec-sheet">
+            <div class="row">
+                <span class="label">Monitor</span>
+                <span class="arrow">→</span>
+                <span class="value">BenQ ZOWIE XL2566K (360Hz)</span>
+            </div>
+            <div class="row">
+                <span class="label">Mouse</span>
+                <span class="arrow">→</span>
+                <span class="value">Logitech G Pro X Superlight</span>
+            </div>
+            <div class="row">
+                <span class="label">Keyboard</span>
+                <span class="arrow">→</span>
+                <span class="value">Wooting 60HE (Rapid Trigger)</span>
+            </div>
+            <div class="row">
+                <span class="label">Audio</span>
+                <span class="arrow">→</span>
+                <span class="value">Sennheiser HD 660S + GoXLR</span>
+            </div>
+        </div>
+
+        <h2 class="section-title">Current Rotation</h2>
+        <div class="game-list">
+            <div class="game-item">
+                <span class="game-title">Elden Ring</span>
+                <span class="game-desc">Seamless Co-op DLC Run</span>
+            </div>
+            <div class="game-item">
+                <span class="game-title">Valorant</span>
+                <span class="game-desc">Ranked Grind (Ascendant)</span>
+            </div>
+            <div class="game-item">
+                <span class="game-title">Cyberpunk 2077</span>
+                <span class="game-desc">Path Tracing Showcase</span>
+            </div>
+        </div>
+
+        <div class="cta-container">
+            <a href="https://steamcommunity.com/id/katzeowo/" target="_blank" class="btn-ghost">Steam</a>
+            <a href="https://youtube.com/@yourchannel" target="_blank" class="btn-ghost">YouTube</a>
+            <a href="https://twitch.tv/yourhandle" target="_blank" class="btn-ghost">Twitch</a>
+        </div>
+
     </section>
-    <section>
-        <h2>Setup</h2>
-        <p>RTX 4090, etc...</p>
-    </section>
+
+    <style>
+        .gaming-container {
+            margin-top: 1rem;
+            font-family: 'Courier New', Courier, monospace; 
+        }
+
+        .main-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .intro-text {
+            color: var(--secondary-text);
+            margin-bottom: 2.5rem;
+            font-style: italic;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        /* === REUSING THE GRID SYSTEM === */
+        .spec-sheet {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem; 
+            font-size: 1rem;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 100px 30px 1fr; /* Fixed Width Labels */
+            align-items: baseline;
+        }
+
+        .label {
+            font-weight: bold;
+            color: var(--secondary-text); 
+        }
+
+        .arrow {
+            color: var(--text-color);
+            opacity: 0.5;
+            user-select: none; 
+        }
+
+        .value {
+            color: var(--text-color);
+        }
+
+        /* === GAME LIST STYLES === */
+        .game-list {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .game-item {
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 4px;
+            background: rgba(0,0,0,0.02);
+        }
+
+        .game-title {
+            display: block;
+            font-weight: 800;
+            margin-bottom: 0.2rem;
+        }
+
+        .game-desc {
+            font-size: 0.9rem;
+            color: var(--secondary-text);
+        }
+
+        /* === BUTTONS === */
+        .cta-container {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-ghost {
+            padding: 10px 20px;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .btn-ghost:hover {
+            background: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        @media (max-width: 500px) {
+            .row {
+                grid-template-columns: 1fr; 
+                gap: 0.2rem;
+                margin-bottom: 0.8rem;
+            }
+            .arrow { display: none; }
+        }
+    </style>
 </BaseLayout>
