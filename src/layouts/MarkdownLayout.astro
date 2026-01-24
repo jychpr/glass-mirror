@@ -6,7 +6,7 @@ const { frontmatter } = Astro.props;
 // If you DON'T want a huge placeholder on the specific blog post page, 
 // you can skip this step and keep your original "&&" code. 
 // But if you want consistency, use this:
-const heroImage = frontmatter.image?.url || '/glass-mirror/images/test.jpg';
+const heroImage = frontmatter.image?.url || '/glass-mirror/images/testdefault.jpg';
 const heroAlt = frontmatter.image?.alt || 'Article header';
 ---
 
