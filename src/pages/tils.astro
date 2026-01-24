@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = "Blog";
+const pageTitle = "jychpr's TILs";
 
 const allPosts = await Astro.glob('./posts/*.md');
 
@@ -12,8 +12,8 @@ tils.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pub
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <h2>Writing</h2>
-    <p>Thoughts on code, simplicity, and structure.</p>
+    <h2>Learning</h2>
+    <p>Collections of Today I Learns</p>
 
     <ul class="link-list">
         {tils.map((post) => (
