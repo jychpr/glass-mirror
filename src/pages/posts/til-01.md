@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
-title: 'How to to TILs'
+title: 'How to do TILs'
 pubDate: 2026-01-16
 description: 'Today I Learn'
 author: 'Joy Chrissetyo Prajogo'
