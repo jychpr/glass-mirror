@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 // 1. Import the new component
 import Card from '../components/Card.astro';
-const pageTitle = "Blog";
+const pageTitle = "jychpr's Blog";
 
 const allPosts = await Astro.glob('./posts/*.md');
 const blogs = allPosts.filter((post) => post.frontmatter.tags?.includes('blog'));
@@ -13,7 +13,7 @@ blogs.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pu
 
 <BaseLayout pageTitle={pageTitle}>
     <h2>Writing</h2>
-    <p>Thoughts on code, simplicity, and structure.</p>
+    <p>Thoughts on technical stuffs here.</p>
 
     <div class="card-grid">
         {blogs.map((post) => (

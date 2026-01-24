@@ -1,13 +1,13 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
-title: 'Hogwarts'
-pubDate: 2026-01-20
-description: 'My thoughts on the latest update.'
-author: 'Joy Chrissetyo'
+title: 'Hogwarts Legacy Gameplay Finale Episode'
+pubDate: 2026-01-19
+description: 'Hogwarts Legacy Gameplay Walkthrough Final Episode'
+author: 'Akihito'
 tags: ["content"]
 # IMPORTANT: Use 'externalLink' if you want the card to go straight to YouTube
 externalLink: 'https://youtu.be/hZQiT4QVkV8' 
 image:
-    url: '/glass-mirror/images/test.jpg'
+    url: '/glass-mirror/images/fun-profile.png'
     alt: 'YouTube Thumbnail'
 ---

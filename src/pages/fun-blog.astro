@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Card from '../components/Card.astro';
-const pageTitle = "Joy's Random Thoughts"; // Tweaked title
+const pageTitle = "Akihito's Random Thoughts"; // Tweaked title
 
 const allPosts = await Astro.glob('./posts/*.md');
 
@@ -18,8 +18,8 @@ funPosts.sort((a, b) => {
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <h2>Writing & Rants</h2>
-    <p>Thoughts on gaming, lifting, and the walk of faith.</p>
+    <h2>Just Random Writings</h2>
+    <p>Collections of random thoughts</p>
 
     <div class="card-grid">
         {funPosts.map((post) => (
