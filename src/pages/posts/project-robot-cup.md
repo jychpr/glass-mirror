@@ -1,9 +1,9 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
 title: 'Robotic Generative AI 3-Cup Game'
-pubDate: 2024-08-21
+pubDate: 2026-01-18
 description: 'Vision system for a robotic game using YOLOv7 and SORT tracking.'
-author: 'Joy Chrissetyo'
+author: 'Joy Chrissetyo Prajogo'
 tags: ["project"]
 image:
     url: '/glass-mirror/images/project-content/cup-game-robot.png'
