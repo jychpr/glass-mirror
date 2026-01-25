@@ -6,7 +6,7 @@ description: 'Vision system for a robotic game using YOLOv7 and SORT tracking.'
 author: 'Joy Chrissetyo Prajogo'
 tags: ["project"]
 image:
-    url: '/glass-mirror/images/project-content/cup-game-robot.png'
+    url: '/images/project-content/cup-game-robot.png'
     alt: 'Robotic Arm and Cups'
 ---
 

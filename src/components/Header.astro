@@ -9,7 +9,7 @@ const isFun = pathname.includes('/fun') ||
               pathname.includes('/content'); // Added this!
 
 // 2. SWITCH LOGIC
-const switchTarget = isFun ? '/glass-mirror/' : '/glass-mirror/fun';
+const switchTarget = isFun ? '/' : '/fun';
 const switchLabel = isFun ? "Switch to Pro" : "Switch to Fun";
 
 // 3. TAGLINE LOGIC
@@ -19,7 +19,7 @@ const tagline = isFun ? "You found my other side!" : "Hello World!";
 <header>
     <div class="header-content">
         <div class="brand">
-            <a href={isFun ? "/glass-mirror/fun" : "/glass-mirror/"} class="logo" id="logo-text">
+            <a href={isFun ? "/fun" : "/"} class="logo" id="logo-text">
                 {isFun ? "7Akihito" : "jychpr"}
             </a>
             <span class="tagline fade-in">{tagline}</span>
@@ -40,19 +40,19 @@ const tagline = isFun ? "You found my other side!" : "Hello World!";
         {isFun ? (
             /* === FUN MENU === */
             <div class="nav-links">
-                <a href="/glass-mirror/fun">Home</a>
-                <a href="/glass-mirror/gaming">Gaming</a>
-                <a href="/glass-mirror/content">Contents</a>
-                <a href="/glass-mirror/fun-blog">Random Blogs</a>
+                <a href="/fun">Home</a>
+                <a href="/gaming">Gaming</a>
+                <a href="/content">Contents</a>
+                <a href="/fun-blog">Random Blogs</a>
             </div>
         ) : (
             /* === PRO MENU === */
             <div class="nav-links">
-                <a href="/glass-mirror/">Home</a>
-                <a href="/glass-mirror/projects">Projects</a>
-                <a href="/glass-mirror/blog">Blog</a> 
-                <a href="/glass-mirror/tils">TILs</a>
-                <a href="/glass-mirror/cv" target="_blank">Resume</a>
+                <a href="/">Home</a>
+                <a href="/projects">Projects</a>
+                <a href="/blog">Blog</a> 
+                <a href="/tils">TILs</a>
+                <a href="/cv" target="_blank">Resume</a>
             </div>
         )}
     </nav>
