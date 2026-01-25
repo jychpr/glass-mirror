@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
 title: 'Glass Mirror Website'
-pubDate: 2026-01-16
+pubDate: 2026-01-18
 description: 'A minimalist portfolio site built with Astro and raw CSS.'
 author: 'Joy Chrissetyo Prajogo'
 tags: ["project"]
