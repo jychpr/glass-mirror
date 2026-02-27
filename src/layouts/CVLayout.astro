@@ -24,31 +24,25 @@ const { pageTitle } = Astro.props;
 </html>
 
 <style is:global>
-    /* === SCREEN STYLES === */
     body.cv-mode {
         background-color: #525659;
         margin: 0;
-        padding: 2rem 1rem; /* Added side padding so it doesn't touch screen edges */
+        padding: 2rem 0;
         display: flex;
         flex-direction: column;
         align-items: center;
         min-height: 100vh;
-        width: 100%;
-        box-sizing: border-box;
     }
 
     .a4-page {
         background: white;
-        /* THE FIX: Use 100% width but max-width for desktop scaling */
-        width: 100%;
-        max-width: 210mm; 
+        width: 210mm;
         min-height: 297mm;
-        padding: 15mm 20mm; 
+        padding: 15mm 20mm;
         box-shadow: 0 0 15px rgba(0,0,0,0.3);
         margin-bottom: 2rem;
         color: #000;
         box-sizing: border-box;
-        overflow-x: hidden; /* Prevent horizontal scroll */
     }
 
     .download-bar {
@@ -79,42 +73,6 @@ const { pageTitle } = Astro.props;
         text-decoration: underline;
     }
 
-    /* === MOBILE SCREEN FIX === */
-    @media screen and (max-width: 768px) {
-        body.cv-mode {
-            background-color: #525659;
-            margin: 0 !important;           /* Override global margin */
-            padding: 2rem 1rem; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            width: 100%;
-            max-width: none !important;     /* THE FIX: Removes the 650px crush */
-            box-sizing: border-box;
-        }
-        .a4-page {
-            background: white;
-            width: 100%;
-            max-width: 210mm; 
-            min-height: 297mm;
-            padding: 15mm 20mm; 
-            box-shadow: 0 0 15px rgba(0,0,0,0.3);
-            margin: 0 auto 2rem auto;       /* Double-lock centering */
-            color: #000;
-            box-sizing: border-box;
-            overflow-x: hidden; 
-        }
-        .download-bar {
-            top: 0;
-            right: 0;
-            left: 0;
-            border-radius: 0; /* Span full width on phone */
-            justify-content: center;
-        }
-    }
-
-    /* === PRINT STYLES === */
     @media print {
         @page {
             margin: 15mm 20mm;
@@ -129,11 +87,9 @@ const { pageTitle } = Astro.props;
 
         .a4-page {
             width: 100%;
-            max-width: none;
             height: auto;
-            min-height: 0;
             margin: 0;
-            padding: 0; 
+            padding: 0;
             box-shadow: none;
             border: none;
         }
