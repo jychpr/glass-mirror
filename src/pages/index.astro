@@ -53,7 +53,7 @@ const pageImage = "/images/pro-profile.jpg";
                 <span class="label">Reach Out</span>
                 <span class="arrow">→</span>
                 <span class="value">
-                    <a href="mailto:joy.chr.pr@gmail.com" class="link-highlight">Say Hi to me!</a>
+                    <a href="#" class="link-highlight secure-contact">Say Hi to me!</a>
                 </span>
             </div>
 
@@ -74,6 +74,23 @@ const pageImage = "/images/pro-profile.jpg";
             <a href="/cv" class="btn-primary" target="_blank">View Full Resume</a>
         </div>
     </section>
+
+    <script>
+        // Anti-Spam Email Obfuscation
+        // Bots cannot read this because it requires human interaction to assemble the string.
+        const contactLinks = document.querySelectorAll('.secure-contact');
+        
+        contactLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Split the email into pieces so bots don't recognize it
+                const user = "joy.chr.pr";
+                const domain = "gmail.com";
+                // Assemble and execute on click
+                window.location.href = `mailto:${user}@${domain}`;
+            });
+        });
+    </script>
 
     <style>
         .intro-container {
