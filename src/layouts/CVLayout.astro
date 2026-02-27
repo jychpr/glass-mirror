@@ -28,24 +28,27 @@ const { pageTitle } = Astro.props;
     body.cv-mode {
         background-color: #525659;
         margin: 0;
-        padding: 2rem 0;
+        padding: 2rem 1rem; /* Added side padding so it doesn't touch screen edges */
         display: flex;
         flex-direction: column;
         align-items: center;
         min-height: 100vh;
-        max-width: none;
         width: 100%;
+        box-sizing: border-box;
     }
 
     .a4-page {
         background: white;
-        width: 210mm;
+        /* THE FIX: Use 100% width but max-width for desktop scaling */
+        width: 100%;
+        max-width: 210mm; 
         min-height: 297mm;
-        padding: 15mm 20mm; /* Reverted to 15mm for screen match */
+        padding: 15mm 20mm; 
         box-shadow: 0 0 15px rgba(0,0,0,0.3);
         margin-bottom: 2rem;
         color: #000;
         box-sizing: border-box;
+        overflow-x: hidden; /* Prevent horizontal scroll */
     }
 
     .download-bar {
@@ -76,40 +79,58 @@ const { pageTitle } = Astro.props;
         text-decoration: underline;
     }
 
+    /* === MOBILE SCREEN FIX === */
+    @media screen and (max-width: 768px) {
+        body.cv-mode {
+            padding: 4rem 0 0 0; /* Make room for the fixed top bar */
+            background-color: white; /* Looks better on mobile */
+        }
+        .a4-page {
+            padding: 20px 15px; /* Shrink margins so text fits on narrow screens */
+            box-shadow: none; /* Remove shadow to look like a native mobile view */
+            min-height: auto; /* Remove forced height */
+        }
+        .download-bar {
+            top: 0;
+            right: 0;
+            left: 0;
+            border-radius: 0; /* Span full width on phone */
+            justify-content: center;
+        }
+    }
+
     /* === PRINT STYLES === */
     @media print {
         @page {
-            /* REVERTED TO 15mm (Your preferred spacing) */
-            margin: 15mm 20mm; 
+            margin: 15mm 20mm;
             size: A4;
         }
         
         body.cv-mode {
             background: white;
             display: block;
+            padding: 0;
         }
 
         .a4-page {
-            width: 100%; 
+            width: 100%;
+            max-width: none;
             height: auto;
+            min-height: 0;
             margin: 0;
             padding: 0; 
             box-shadow: none;
             border: none;
         }
 
-        /* === FIXING THE BLANK PAGE === */
-        /* 1. We disable the manual page break div to prevent double-breaks */
         .page-break {
             display: none;
         }
 
-        /* 2. We let the Chinese Section handle the break alone */
         .chinese-version {
             page-break-before: always;
             padding-top: 0;
         }
-        /* ============================ */
 
         .no-print {
             display: none !important;
@@ -120,7 +141,6 @@ const { pageTitle } = Astro.props;
             print-color-adjust: exact !important;
         }
         
-        /* Allow natural flowing text */
         .section-block, .item {
             break-inside: auto;
         }
