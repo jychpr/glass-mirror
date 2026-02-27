@@ -463,49 +463,56 @@ import CVLayout from '../layouts/CVLayout.astro';
 
 </CVLayout>
 
-<style>
-    /* LOCAL STYLES FOR CONTENT */
-    h1 {
-        margin: 0;
-        font-size: 18pt; /* Optimized for A4 to prevent wrapping */
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        line-height: 1.2;
+<style is:global>
+    /* === COMPACT RESUME OVERRIDES === */
+    /* This forcefully shrinks your existing theme to fit 1 page */
+
+    /* 1. Shrink the Paper Padding to maximize space */
+    .a4-page {
+        padding: 10mm 15mm !important; /* Smaller margins than the CV */
     }
-    h2 {
-        font-size: 14pt;
-        border-bottom: 2px solid #333;
-        margin-top: 15px;
-        margin-bottom: 10px;
-        text-transform: uppercase;
+
+    /* 2. Compress Headers */
+    h1 { margin-bottom: 0.3rem !important; font-size: 1.8rem !important; }
+    h2 { 
+        font-size: 1.15rem !important; 
+        margin: 0.8rem 0 0.4rem 0 !important; 
+        padding-bottom: 2px !important; 
     }
-    h3 { margin: 0; font-size: 11pt; font-weight: bold; }
+    h3 { font-size: 1.05rem !important; margin: 0 !important; }
 
-    .chinese-name { font-weight: normal; margin-left: 10px; }
-    .cv-header { text-align: center; margin-bottom: 20px; }
-    .contact-info p { margin: 2px 0; font-size: 10pt; color: #444; }
-    .contact-info a { color: #000; text-decoration: none; border-bottom: 1px dotted #000; }
+    /* 3. Tighten Contact Info */
+    .contact-info { margin-bottom: 0.8rem !important; }
+    .contact-info p { 
+        font-size: 0.85rem !important; 
+        margin: 0 !important; 
+        line-height: 1.2 !important; 
+    }
 
-    .item { margin-bottom: 12px; }
-    .row { display: flex; justify-content: space-between; align-items: baseline; }
-    .date { font-size: 10pt; font-weight: bold; }
-    .sub { margin: 2px 0; font-style: italic; font-size: 10pt; }
-    .desc { margin: 2px 0; font-size: 10pt; }
+    /* 4. Compress the Job/Education Items */
+    .item { margin-bottom: 0.5rem !important; }
+    .date { font-size: 0.85rem !important; margin: 0 !important; }
+    .sub { font-size: 0.9rem !important; margin: 1px 0 !important; }
 
-    .details { margin: 4px 0 0 18px; padding: 0; font-size: 10pt; }
-    .details li { margin-bottom: 2px; }
+    /* 5. Shrink Bullet Points and Line Heights */
+    .details { 
+        margin: 0.2rem 0 0 1.2rem !important; 
+        font-size: 0.85rem !important; 
+        line-height: 1.3 !important; 
+    }
+    .details li { margin-bottom: 2px !important; }
 
-    .skills { font-size: 10pt; line-height: 1.4; }
+    /* 6. Tighten Skills Section */
+    .skills { 
+        font-size: 0.85rem !important; 
+        line-height: 1.3 !important; 
+        margin: 0.2rem 0 !important; 
+    }
 
-    .language-divider { margin: 40px 0; border: 0; border-top: 1px dashed #ccc; }
-
-    /* PRINT BREAKS */
+    /* 7. Print Adjustments for 1-Page Output */
     @media print {
-        .page-break { page-break-before: always; }
-        .language-divider { display: none; }
-        h2 { -webkit-print-color-adjust: exact; border-bottom: 2px solid black !important; }
-        /* Ensure links don't show blue/underline in print if preferred,
-        or keep them to show they are clickable in PDF */
-        a { text-decoration: none; color: black; border: none; }
+        @page {
+            margin: 10mm 15mm; /* Forces the printer to use small margins */
+        }
     }
 </style>
