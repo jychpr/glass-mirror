@@ -196,6 +196,22 @@ const pageImage = "/images/pro-profile.jpg";
             transform: translateY(-2px); 
         }
 
+        .btn-secondary {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: opacity 0.2s, transform 0.1s;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+        }
+
+        .btn-secondary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px); 
+        }
+
         @media (max-width: 500px) {
             .row {
                 grid-template-columns: 1fr; 
