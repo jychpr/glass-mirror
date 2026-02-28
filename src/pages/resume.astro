@@ -420,21 +420,18 @@ import CVLayout from '../layouts/CVLayout.astro';
 </CVLayout>
 
 <style is:global>
-    /* === 1-PAGE RESUME COMPRESSION === */
+    /* === 1-PAGE RESUME COMPRESSION (v2) === */
     
-    /* 1. Ultra-Narrow Margins (Like Word Narrow 1cm) */
+    /* 1. Web Display Padding (Looks good on screen) */
     .a4-page {
-        padding: 10mm 12mm !important; /* Shrinks the white space inside the paper */
+        padding: 12mm 15mm !important; 
     }
 
-    /* 2. Header (Keeps your exact centering) */
-    .cv-header { 
-        text-align: center; 
-        margin-bottom: 10px; /* Tighter than original 20px */
-    }
+    /* 2. Header */
+    .cv-header { text-align: center; margin-bottom: 12px; }
     h1 { 
         margin: 0; 
-        font-size: 15pt !important; /* Down from 18pt */
+        font-size: 16pt !important; /* Bumped up from 15pt */
         text-transform: uppercase; 
         letter-spacing: 1px; 
         line-height: 1.1; 
@@ -442,62 +439,60 @@ import CVLayout from '../layouts/CVLayout.astro';
     .chinese-name { font-weight: normal; margin-left: 8px; }
     
     .contact-info p { 
-        margin: 1px 0; 
-        font-size: 8.5pt; /* Down from 10pt */
+        margin: 2px 0; 
+        font-size: 9.5pt; /* Bumped up from 8.5pt */
         color: #333; 
     }
-    .contact-info a { 
-        color: #000; 
-        text-decoration: none; 
-        border-bottom: 1px dotted #000; 
-    }
+    .contact-info a { color: #000; text-decoration: none; border-bottom: 1px dotted #000; }
 
     /* 3. Section Headers */
     h2 { 
-        font-size: 11pt !important; /* Down from 14pt */
+        font-size: 12pt !important; /* Bumped up from 11pt */
         border-bottom: 1.5px solid #333; 
-        margin-top: 10px; 
-        margin-bottom: 4px; 
+        margin-top: 12px; 
+        margin-bottom: 6px; 
         padding-bottom: 2px;
         text-transform: uppercase; 
     }
     
-    /* 4. Content Items (Jobs, Education) */
-    .item { margin-bottom: 6px; } /* Down from 12px */
+    /* 4. Content Items */
+    .item { margin-bottom: 8px; } 
     .row { display: flex; justify-content: space-between; align-items: baseline; }
-    h3 { margin: 0; font-size: 9.5pt !important; font-weight: bold; }
-    .date { font-size: 8.5pt; font-weight: bold; }
-    .sub { margin: 1px 0; font-style: italic; font-size: 8.5pt; }
+    h3 { margin: 0; font-size: 10.5pt !important; font-weight: bold; }
+    .date { font-size: 9.5pt; font-weight: bold; }
+    .sub { margin: 1px 0; font-style: italic; font-size: 9.5pt; }
     
     /* 5. Bullet Points & Text */
     .details { 
-        margin: 2px 0 0 16px; 
+        margin: 3px 0 0 16px; 
         padding: 0; 
-        font-size: 8.5pt; /* Smaller text */
-        line-height: 1.3; /* Tighter line height */
+        font-size: 9.5pt; /* Bumped up from 8.5pt */
+        line-height: 1.35; 
     }
-    .details li { margin-bottom: 1px; }
+    .details li { margin-bottom: 2px; }
 
     .skills { 
-        font-size: 8.5pt; 
-        line-height: 1.35; 
-        margin: 2px 0; 
+        font-size: 9.5pt; 
+        line-height: 1.4; 
+        margin: 3px 0; 
     }
 
-    /* Hide the divider since it takes up space */
     .language-divider { display: none; }
 
     /* 6. STRICT PRINT OVERRIDES */
     @media print {
         @page {
-            margin: 8mm 10mm; /* Forces the printer to use tiny margins */
+            /* This dictates the absolute edge of the paper */
+            margin: 10mm 12mm; 
             size: A4;
         }
+        .a4-page {
+            /* THE FIX: We destroy the web padding so it doesn't double-stack in the PDF */
+            padding: 0 !important; 
+            box-shadow: none;
+        }
         .page-break { display: none; }
-        
-        /* If you haven't deleted the Chinese section yet, this forces it to hide in print for the 1-page version */
         .chinese-version { display: none !important; } 
-        
         h2 { -webkit-print-color-adjust: exact; border-bottom: 1.5px solid black !important; }
         a { text-decoration: none; color: black; border: none; }
     }
