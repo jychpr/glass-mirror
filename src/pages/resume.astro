@@ -391,15 +391,15 @@ import CVLayout from '../layouts/CVLayout.astro';
 </CVLayout>
 
 <style is:global>
-    /* === 1-PAGE RESUME COMPRESSION (v3 - Ultra Tight) === */
+    /* === 1-PAGE RESUME COMPRESSION (v4 - Dual Language) === */
     
-    /* 1. Web Display Padding (Kept reasonable for screens) */
+    /* 1. Web Display Padding */
     .a4-page {
         padding: 10mm 15mm !important; 
     }
 
     /* 2. Header */
-    .cv-header { text-align: center; margin-bottom: 8px !important; } /* Tighter */
+    .cv-header { text-align: center; margin-bottom: 8px !important; }
     h1 { 
         margin: 0; 
         font-size: 16pt !important; 
@@ -410,24 +410,24 @@ import CVLayout from '../layouts/CVLayout.astro';
     .chinese-name { font-weight: normal; margin-left: 8px; }
     
     .contact-info p { 
-        margin: 1px 0 !important; /* Tighter */
+        margin: 1px 0 !important; 
         font-size: 9.5pt; 
         color: #333; 
     }
     .contact-info a { color: #000; text-decoration: none; border-bottom: 1px dotted #000; }
 
-    /* 3. Section Headers (CRUSHED SPACING) */
+    /* 3. Section Headers */
     h2 { 
         font-size: 12pt !important; 
         border-bottom: 1.5px solid #333; 
-        margin-top: 8px !important;     /* Reduced gap above section */
-        margin-bottom: 3px !important;  /* Reduced gap below line */
-        padding-bottom: 1px !important; /* Pulled line closer to text */
+        margin-top: 8px !important;     
+        margin-bottom: 3px !important;  
+        padding-bottom: 1px !important; 
         text-transform: uppercase; 
     }
     
     /* 4. Content Items */
-    .item { margin-bottom: 4px !important; } /* Reduced space between jobs/projects */
+    .item { margin-bottom: 4px !important; } 
     .row { display: flex; justify-content: space-between; align-items: baseline; }
     h3 { margin: 0; font-size: 10.5pt !important; font-weight: bold; }
     .date { font-size: 9.5pt; font-weight: bold; }
@@ -435,10 +435,10 @@ import CVLayout from '../layouts/CVLayout.astro';
     
     /* 5. Bullet Points & Text */
     .details { 
-        margin: 1px 0 0 16px !important; /* Pushed bullets closer to job title */
+        margin: 1px 0 0 16px !important; 
         padding: 0; 
         font-size: 9.5pt; 
-        line-height: 1.3 !important; /* Tighter line height */
+        line-height: 1.3 !important; 
     }
     .details li { margin-bottom: 1px !important; }
 
@@ -448,13 +448,17 @@ import CVLayout from '../layouts/CVLayout.astro';
         margin: 2px 0 !important; 
     }
 
-    .language-divider { display: none; }
+    /* === THE WEB SEPARATOR === */
+    /* This will show a nice dashed line on the website */
+    .language-divider { 
+        margin: 40px 0 !important; 
+        border: 0; 
+        border-top: 1px dashed #ccc; 
+    }
 
-    /* 6. STRICT PRINT OVERRIDES (LATEX MARGINS) */
+    /* 6. STRICT PRINT OVERRIDES */
     @media print {
         @page {
-            /* THE FIX: Pushes text to the absolute edge of the paper */
-            /* 5mm top/bottom (~0.2 inch), 8mm left/right (~0.3 inch) */
             margin: 5mm 8mm !important; 
             size: A4;
         }
@@ -462,8 +466,21 @@ import CVLayout from '../layouts/CVLayout.astro';
             padding: 0 !important; 
             box-shadow: none;
         }
+        
+        /* Hide the divider line in the PDF (we use a page break instead) */
+        .language-divider { display: none !important; }
+        
+        /* The old manual page break div (keep hidden) */
         .page-break { display: none; }
-        .chinese-version { display: none !important; } 
+
+        /* === DUAL-LANGUAGE PDF LOGIC === */
+        /* Force the Chinese section to jump to the top of Page 2 */
+        .chinese-version { 
+            display: block !important; 
+            page-break-before: always;
+            break-before: page;
+        } 
+        
         h2 { -webkit-print-color-adjust: exact; border-bottom: 1.5px solid black !important; }
         a { text-decoration: none; color: black; border: none; }
     }
