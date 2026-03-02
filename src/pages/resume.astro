@@ -305,25 +305,32 @@ import CVLayout from '../layouts/CVLayout.astro';
         border-top: 1px dashed #ccc; 
     }
 
-    /* 6. STRICT PRINT OVERRIDES */
+    /* 6. STRICT PRINT OVERRIDES (LATEX MARGINS) */
     @media print {
         @page {
+            /* 5mm top/bottom, 8mm left/right */
             margin: 5mm 8mm !important; 
             size: A4;
         }
+
+        /* === MOBILE PDF FIX === */
+        /* Force the mobile browser to use A4 width instead of screen width */
+        body.cv-mode {
+            min-width: 210mm !important;
+        }
+
         .a4-page {
             padding: 0 !important; 
             box-shadow: none;
+            width: 210mm !important; 
+            max-width: 210mm !important;
+            margin: 0 !important;
         }
-        
-        /* Hide the divider line in the PDF (we use a page break instead) */
+        /* ====================== */
+
+        .page-break { display: none; }
         .language-divider { display: none !important; }
         
-        /* The old manual page break div (keep hidden) */
-        .page-break { display: none; }
-
-        /* === DUAL-LANGUAGE PDF LOGIC === */
-        /* Force the Chinese section to jump to the top of Page 2 */
         .chinese-version { 
             display: block !important; 
             page-break-before: always;
