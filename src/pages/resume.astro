@@ -335,10 +335,15 @@ import CVLayout from '../layouts/CVLayout.astro';
             size: A4;
         }
 
-        /* === MOBILE PDF FIX === */
-        /* Force the mobile browser to use A4 width instead of screen width */
-        body.cv-mode {
+        /* === MOBILE PDF OVERRIDE & ANTI-INFLATION === */
+        html, body.cv-mode {
+            /* Kills mobile text resizing dead in its tracks */
+            -webkit-text-size-adjust: 100% !important;
+            text-size-adjust: 100% !important;
+            /* Forces absolute A4 width mapping */
             min-width: 210mm !important;
+            max-width: 210mm !important;
+            width: 210mm !important;
         }
 
         .a4-page {
