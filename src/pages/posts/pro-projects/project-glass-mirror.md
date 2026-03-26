@@ -6,7 +6,7 @@ description: 'A minimalist portfolio site built with Astro and raw CSS.'
 author: 'Joy Chrissetyo Prajogo'
 tags: ["project"]
 image:
-    url: '/images/pro-projects-content/website-glass-mirror-project.png'
+    url: '/images/pro-projects-content/website-glass-mirror-project.webp'
     alt: 'Website Glass Mirror Homepage'
 ---
 

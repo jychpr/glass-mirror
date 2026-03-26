@@ -8,6 +8,6 @@ tags: ["content"]
 # IMPORTANT: Use 'externalLink' if you want the card to go straight to YouTube
 externalLink: 'https://youtu.be/hZQiT4QVkV8' 
 image:
-    url: '/images/fun-profile.png'
+    url: '/images/fun-profile.webp'
     alt: 'YouTube Thumbnail'
 ---
