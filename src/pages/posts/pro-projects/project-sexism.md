@@ -6,7 +6,7 @@ description: 'Empirical study on Annotator-Aware Two-Stage Pipelines using LLMs'
 author: 'Joy Chrissetyo Prajogo'
 tags: ["project"]
 image:
-    url: '/images/project-content/nlp-project.png'
+    url: '/images/pro-projects-content/nlp-project.png'
     alt: 'NLP Pipeline Diagram'
 ---
 

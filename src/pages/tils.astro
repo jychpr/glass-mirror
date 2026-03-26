@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "jychpr's TILs";
 
-const allPosts = await Astro.glob('./posts/*.md');
+const allPosts = await Astro.glob('./posts/pro-tils/*.md');
 
 // FILTERING LOGIC
 const tils = allPosts.filter((post) => post.frontmatter.tags?.includes('til'));

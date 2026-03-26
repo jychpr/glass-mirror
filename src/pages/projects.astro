@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Card from '../components/Card.astro';
 const pageTitle = "jychpr's Projects";
 
-const allPosts = await Astro.glob('./posts/*.md');
+const allPosts = await Astro.glob('./posts/pro-projects/*.md');
 
 // 1. FILTER: Get only projects
 const projects = allPosts.filter((post) => post.frontmatter.tags?.includes('project'));
