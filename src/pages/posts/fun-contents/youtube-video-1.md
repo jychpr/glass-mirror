@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MarkdownLayout.astro
+layout: ../../../layouts/MarkdownLayout.astro
 title: 'Hogwarts Legacy Gameplay Finale Episode'
 pubDate: 2026-01-19
 description: 'Hogwarts Legacy Gameplay Walkthrough Final Episode'
