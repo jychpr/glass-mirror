@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MarkdownLayout.astro
+layout: ../../../layouts/MarkdownLayout.astro
 title: 'How to do TILs'
 pubDate: 2026-01-16
 description: 'Today I Learn'

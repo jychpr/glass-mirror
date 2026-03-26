@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MarkdownLayout.astro
+layout: ../../../layouts/MarkdownLayout.astro
 title: 'Glass Mirror Website'
 pubDate: 2026-01-18
 description: 'A minimalist portfolio site built with Astro and raw CSS.'
