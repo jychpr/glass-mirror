@@ -6,7 +6,7 @@ description: 'My journey creating my own personal website'
 author: 'Joy Chrissetyo Prajogo'
 tags: ["blog"]
 image:
-    url: '/images/project-content/website-glass-mirror-project.png'
+    url: '/images/project-content/website-glass-mirror-project.webp'
     alt: 'Website Glass Mirror Homepage'
 ---
 
