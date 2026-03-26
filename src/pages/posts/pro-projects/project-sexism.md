@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MarkdownLayout.astro
+layout: ../../../layouts/MarkdownLayout.astro
 title: 'Tweets Sexism Detection (NYCU-NLP)'
 pubDate: 2026-01-17
 description: 'Empirical study on Annotator-Aware Two-Stage Pipelines using LLMs'

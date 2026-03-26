@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MarkdownLayout.astro
+layout: ../../../layouts/MarkdownLayout.astro
 title: 'Robotic Generative AI 3-Cup Game'
 pubDate: 2026-01-16
 description: 'Vision system for a robotic game using YOLOv7 and SORT tracking.'

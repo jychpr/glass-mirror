@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MarkdownLayout.astro
+layout: ../../../layouts/MarkdownLayout.astro
 title: 'My Setups'
 pubDate: 2026-01-20
 description: 'Just my setup'
