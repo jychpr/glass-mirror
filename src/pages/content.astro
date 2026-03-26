@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Card from '../components/Card.astro';
 const pageTitle = "Akihito's Content Collections";
 
-const allPosts = await Astro.glob('./posts/*.md');
+const allPosts = await Astro.glob('./posts/fun-contents/*.md');
 
 // 1. FILTER: Only posts tagged "content"
 const contentPosts = allPosts.filter((post) => post.frontmatter.tags?.includes('content'));
