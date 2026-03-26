@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MarkdownLayout.astro
+layout: ../../../layouts/MarkdownLayout.astro
 title: 'Creating Personal Website'
 pubDate: 2024-01-16
 description: 'My journey creating my own personal website'
