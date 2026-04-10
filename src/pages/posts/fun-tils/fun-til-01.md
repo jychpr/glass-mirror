@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/MarkdownLayout.astro
-title: 'Difference of Gameplay Terms: Gameplay, Lets Play, Walkthrough, Playthrough, Longplay'
-pubDate: 2026-01-16
+title: 'Difference of Gameplay Terms in Content Creation'
+pubDate: 2026-04-10
 description: 'Today I Learn'
 author: 'Akihito'
 tags: ["til"]
