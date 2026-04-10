@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/MarkdownLayout.astro
 title: 'Clair Obscur: Expedition 33 Longplay Playlist'
-pubDate: 2026-01-19
+pubDate: 2026-04-08
 description: 'Clair Obscur: Expedition 33 Longplay Playlist'
 author: 'Akihito'
 tags: ["content"]
