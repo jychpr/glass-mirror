@@ -1,19 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = "jychpr's TILs";
+const pageTitle = "Akihito's Random TIL's";
 
-const allPosts = await Astro.glob('./posts/pro-tils/*.md');
+const funTILs = await Astro.glob('./posts/fun-tils/*.md');
 
 // FILTERING LOGIC
-const tils = allPosts.filter((post) => post.frontmatter.tags?.includes('til'));
+const tils = funTILs.filter((post) => post.frontmatter.tags?.includes('til'));
 
 // Add this line
 tils.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate));
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <h2>Learning</h2>
-    <p>Technical or scientific things I learned along the way</p>
+    <h2>Random TIL's</h2>
+    <p>Quick thing I learnt along the way</p>
 
     <ul class="link-list">
         {tils.map((post) => (
