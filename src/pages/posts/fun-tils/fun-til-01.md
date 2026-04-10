@@ -4,7 +4,7 @@ title: 'Difference of Gameplay Terms: Gameplay, Lets Play, Walkthrough, Playthro
 pubDate: 2026-01-16
 description: 'Today I Learn'
 author: 'Akihito'
-tags: ["content creation"]
+tags: ["til"]
 image:
     url: '/images/testdefault.webp'
     alt: 'TILs Background'
