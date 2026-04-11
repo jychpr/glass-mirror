@@ -5,10 +5,9 @@ pubDate: 2026-04-10
 description: 'Today I Learn'
 author: 'Akihito'
 tags: ["til"]
-image:
-    url: '/images/testdefault.webp'
-    alt: 'TILs Background'
 ---
+Today I learn more clearly about the differences of these terms: Gameplay, Let's Play, Walkthrough, Playthrough, Longplay.
+
 Gameplay: General term of any video showcasing a game itself. With or without commentary. Mild to highly edited.
 
 Let's Play: Highly commentary. Medium to highly edited. Familiarity with the game is irrelevant.
