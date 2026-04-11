@@ -5,9 +5,6 @@ pubDate: 2026-02-17
 description: 'Clarifying the difference between Meta''s DINO and IDEA Research''s DINO.'
 author: 'Joy Chrissetyo Prajogo'
 tags: ["til"]
-image:
-    url: '/images/testdefault.webp'
-    alt: 'TILs Background'
 ---
 
 I was reviewing literature today and hit a classic computer vision naming collision. 
