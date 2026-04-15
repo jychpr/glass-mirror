@@ -11,10 +11,10 @@ image:
 ---
 
 <div class="architecture-grid">
-  <img src="/images/projects/nlp-project-1.webp" alt="Data Preprocessing Flow" />
-  <img src="/images/projects/nlp-project-2.webp" alt="Annotator-Aware Two-Stage Pipeline System with Data Postprocessing" />
-  <img src="/images/projects/nlp-project-3.webp" alt="Simplified High-Level Diagram of Transformer-Based Approach" />
-  <img src="/images/projects/nlp-proejct-4.webp" alt="Simplified High-Level Diagram of LLM-Based System" />
+  <img src="/images/pro-projects-content/nlp-project-1.webp" alt="Data Preprocessing Flow" />
+  <img src="/images/pro-projects-content/nlp-project-2.webp" alt="Annotator-Aware Two-Stage Pipeline System with Data Postprocessing" />
+  <img src="/images/pro-projects-content/nlp-project-3.webp" alt="Simplified High-Level Diagram of Transformer-Based Approach" />
+  <img src="/images/pro-projects-content/nlp-proejct-4.webp" alt="Simplified High-Level Diagram of LLM-Based System" />
 </div>
 
 <style>
