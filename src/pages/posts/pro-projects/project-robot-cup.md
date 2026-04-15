@@ -79,3 +79,6 @@ def get_vip(self, ball_info, cups_list):
 * **Title:** *A Case of Cups and a Ball: Utilizing Generative Artificial Intelligence for Human-robotic Collaboration in Task Execution*
 * **Conference:** 2024 International Automatic Control Conference (CACS), Taoyuan, Taiwan.
 * **DOI:** [10.1109/CACS63404.2024.10773301](https://doi.org/10.1109/CACS63404.2024.10773301)
+
+## Repository
+* **GitHub:** [View Source Code Here](https://github.com/SpencerGPerkins/YOLOv7_SORT_3-cup_game)
