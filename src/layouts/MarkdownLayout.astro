@@ -48,3 +48,17 @@ const { frontmatter } = Astro.props;
         margin-left: 1.5rem;
     }
 </style>
+
+<script>
+    // Automatically open external links in a new tab
+    const links = document.querySelectorAll('.content a');
+    
+    links.forEach(link => {
+        // If the link points to a different domain than your website
+        if (link.hostname !== window.location.hostname) {
+            link.setAttribute('target', '_blank');
+            // Security best practice for target="_blank"
+            link.setAttribute('rel', 'noopener noreferrer'); 
+        }
+    });
+</script>
