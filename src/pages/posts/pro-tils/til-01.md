@@ -7,6 +7,7 @@ author: 'Joy Chrissetyo Prajogo'
 tags: ["til"]
 ---
 
+## Story
 I was reviewing literature today and hit a classic computer vision naming collision. 
 
 If a colleague or collaborator sends you a paper mentioning "DINO", you must immediately clarify which architecture they mean, as they solve entirely different problems:
@@ -16,4 +17,5 @@ If a colleague or collaborator sends you a paper mentioning "DINO", you must imm
 
 One is an object detector. The other is a method for training foundational vision models without labels. 
 
-**The Takeaway:** Never assume architecture names are globally unique in AI. Always verify the arXiv link and the reference section before diving into a codebase or designing an integration.
+## The Takeaway
+Never assume architecture names are globally unique in AI. Always verify the arXiv link and the reference section before diving into a codebase or designing an integration.
