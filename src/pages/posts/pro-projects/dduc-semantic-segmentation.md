@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/MarkdownLayout.astro
 title: 'DDUC & Aerial Video Greenery Indexing'
-pubDate: 2026-04-17
+pubDate: 2026-04-15
 description: 'Implementation of Dual Dense Upsampling Convolution for dynamic urban greenery analysis.'
 author: 'Joy Chrissetyo Prajogo'
 tags: ["project"]
@@ -98,6 +98,7 @@ summary = {
 # Output serialized to CSV for downstream urban analysis dashboards
 ```
 
+## Sample Inference Results
 <div class="vertical-image-stack">
   <img src="/images/pro-projects-content/DDUC_highest_pvgvi_1.webp" alt="Highest PVGVI Sample: Dashcam - Real" />
   <img src="/images/pro-projects-content/DDUC_highest_pvgvi_2.webp" alt="Highest PVGVI Sample: Dashcam - Simulation" />

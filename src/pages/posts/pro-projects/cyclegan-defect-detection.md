@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/MarkdownLayout.astro
 title: 'CycleGAN-Based Synthetic Data Generation'
-pubDate: 2026-04-16
+pubDate: 2026-02-20
 description: 'Generative Synthetic Dataset Generation and Automatic Image Annotation'
 author: 'Joy Chrissetyo Prajogo'
 tags: ["project"]
