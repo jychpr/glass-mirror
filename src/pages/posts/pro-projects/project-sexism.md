@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/MarkdownLayout.astro
 title: 'Tweets Sexism Detection (NYCU-NLP)'
-pubDate: 2026-01-17
+pubDate: 2026-03-16
 description: 'Empirical study on Annotator-Aware Two-Stage Pipelines using LLMs'
 author: 'Joy Chrissetyo Prajogo'
 tags: ["project"]
