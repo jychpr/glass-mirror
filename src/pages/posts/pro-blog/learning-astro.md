@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/MarkdownLayout.astro
 title: 'Creating Personal Website'
-pubDate: 2024-01-16
+pubDate: 2026-01-16
 description: 'My journey creating my own personal website'
 author: 'Joy Chrissetyo Prajogo'
 tags: ["blog"]
