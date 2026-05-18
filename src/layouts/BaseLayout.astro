@@ -11,7 +11,7 @@ const {
 } = Astro.props;
 
 // 2. Construct the full URL for the image (Social networks hate relative paths)
-const siteUrl = "https://jychpr.github.io"; // YOUR DOMAIN
+const siteUrl = Astro.site.toString().replace(/\/$/, ''); // YOUR DOMAIN
 const socialImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 const currentUrl = Astro.url.href;
 ---
