@@ -8,7 +8,7 @@ const allPosts = await Astro.glob('./posts/fun-blog/*.md');
 // 1. FILTER: "fun", "gaming", "gym", "faith"
 const funPosts = allPosts.filter((post) => {
     const tags = post.frontmatter.tags || [];
-    return tags.some(tag => ['fun', 'gaming', 'gym', 'faith'].includes(tag));
+    return tags.some(tag => ['fun', 'gaming', 'gym', 'faith', 'random'].includes(tag));
 });
 
 // 2. SORT: Newest First
