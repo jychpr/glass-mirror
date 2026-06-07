@@ -4,7 +4,7 @@ title: 'Taking the Taiwanese Motorcycle License Exam as an International: A Stor
 pubDate: 2026-06-07
 description: 'The story, the guide, the tips.'
 author: 'Akihito'
-tags: ["blog"]
+tags: ["random"]
 image:
     url: '/images/fun-blog-content/license-test-result.webp'
     alt: 'Taiwanese Motorcycle Test Result'
