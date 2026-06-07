@@ -2,7 +2,7 @@
 layout: ../../../layouts/MarkdownLayout.astro
 title: 'Difference of Gameplay Terms in Content Creation'
 pubDate: 2026-04-10
-description: 'Today I Learn'
+description: 'What are those gaming videos term differences'
 author: 'Akihito'
 tags: ["til"]
 ---
