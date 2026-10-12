@@ -216,7 +216,13 @@ const { pageTitle } = Astro.props;
         h2 { border-bottom: 1.5px solid black; }
         a { text-decoration: none; color: black; border: none; }
 
-        h2 {
+        /* Page breaks for multi-page documents (the CV) */
+        .cv-header, h2, .row, .sub, .details li, .skills {
+            break-inside: avoid;
+        }
+        /* Keep each heading, and an item's title/date rows and sub-line,
+           with what follows, down to the item's first bullet */
+        h2, .row, .sub {
             break-after: avoid;
         }
     }
