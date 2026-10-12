@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       
       - name: Install, build, and upload your site
-        uses: withastro/action@v2
+        uses: withastro/action@v6
         # withastro/action is a pre-made script by the Astro team
         # It installs Node, runs 'npm install', and 'npm run build' automatically
 
@@ -34,4 +34,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
