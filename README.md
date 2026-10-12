@@ -1,43 +1,38 @@
-# Astro Starter Kit: Minimal
+# Glass Mirror
+
+Source code for my personal website, **[jychpr.dev](https://jychpr.dev)**.
+
+The site has two sides on one domain: **Pro** (projects, technical blog, TILs, CV and resume) and **Fun** (gaming, content and random posts), switched from the header.
+
+## Stack
+
+- [Astro](https://astro.build) 5, built as a static site, with posts in Markdown
+- Raw CSS with CSS variables for light and dark mode
+- GitHub Pages, deployed by GitHub Actions on every push to `main`
+- Cloudflare for the domain and DNS
+
+## Run locally
+
+Use Node 22 or newer.
 
 ```sh
-npm create astro@latest -- --template minimal
+npm ci            # install the exact dependency versions
+npm run dev       # dev server at http://localhost:4321
+npm run build     # production build into dist/
+npm run preview   # serve the production build locally
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Project layout
 
-## 🚀 Project Structure
+| Path | Contents |
+| --- | --- |
+| `src/pages/` | Every file here is a page on the site |
+| `src/pages/posts/` | Projects, blog posts and TILs, in Markdown |
+| `src/pages/cv.astro`, `src/pages/resume.astro` | CV and resume, each in English and Chinese |
+| `src/layouts/CVLayout.astro` | Shared A4 screen and print styles for the CV and resume |
+| `src/components/Header.astro` | Navigation and the Pro/Fun switch |
+| `public/` | Images and other static files, served as-is |
 
-Inside of your Astro project, you'll see the following folders and files:
+The CV and resume print to A4 PDFs straight from the browser with their "Save as PDF / Print" button. The resume is one page per language.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+How the site was built: see its [project page](https://jychpr.dev/posts/pro-projects/project-glass-mirror/).
