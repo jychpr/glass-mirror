@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "Akihito's Random TIL's";
 
-const funTILs = await Astro.glob('./posts/fun-tils/*.md');
+const funTILs = Object.values(import.meta.glob('./posts/fun-tils/*.md', { eager: true }));
 
 // FILTERING LOGIC
 const tils = funTILs.filter((post) => post.frontmatter.tags?.includes('til'));

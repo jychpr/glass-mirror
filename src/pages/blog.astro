@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Card from '../components/Card.astro';
 const pageTitle = "jychpr's Blog";
 
-const allPosts = await Astro.glob('./posts/pro-blog/*.md');
+const allPosts = Object.values(import.meta.glob('./posts/pro-blog/*.md', { eager: true }));
 const blogs = allPosts.filter((post) => post.frontmatter.tags?.includes('blog'));
 
 // Add this line immediately after filtering
