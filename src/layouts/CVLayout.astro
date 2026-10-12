@@ -42,7 +42,7 @@ const { pageTitle } = Astro.props;
         width: 100%;
         max-width: 210mm; /* Stays A4 size on big screens, shrinks on small ones */
         min-height: 297mm;
-        padding: 15mm 20mm;
+        padding: 10mm 15mm; /* Phones get 15px from the mobile block below */
         box-shadow: 0 0 15px rgba(0,0,0,0.3);
         margin-bottom: 2rem;
         color: #000;
@@ -77,7 +77,65 @@ const { pageTitle } = Astro.props;
         text-decoration: underline;
     }
 
-    /* === 2. MOBILE VERTICAL STYLES === */
+    /* === 2. DOCUMENT STYLES (shared by the resume and the CV) === */
+    /* Header */
+    .cv-header { text-align: center; margin-bottom: 8px; }
+    h1 {
+        margin: 0;
+        font-size: 16pt;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        line-height: 1.1;
+    }
+    .chinese-name { font-weight: normal; margin-left: 8px; }
+
+    .contact-info p {
+        margin: 1px 0;
+        font-size: 9.5pt;
+        color: #333;
+    }
+    .contact-info a { color: #000; text-decoration: none; border-bottom: 1px dotted #000; }
+
+    /* Section Headers */
+    h2 {
+        font-size: 12pt;
+        border-bottom: 1.5px solid #333;
+        margin-top: 8px;
+        margin-bottom: 3px;
+        padding-bottom: 1px;
+        text-transform: uppercase;
+    }
+
+    /* Content Items */
+    .item { margin-bottom: 4px; }
+    .row { display: flex; justify-content: space-between; align-items: baseline; }
+    h3 { margin: 0; font-size: 10.5pt; font-weight: bold; }
+    .date { font-size: 9.5pt; font-weight: bold; }
+    .sub { margin: 0; font-style: italic; font-size: 9.5pt; }
+
+    /* Bullet Points & Text */
+    .details {
+        margin: 1px 0 0 16px;
+        padding: 0;
+        font-size: 9.5pt;
+        line-height: 1.3;
+    }
+    .details li { margin-bottom: 1px; }
+
+    .skills {
+        font-size: 9.5pt;
+        line-height: 1.35;
+        margin: 2px 0;
+    }
+
+    /* Dashed separator between the two languages on the website */
+    .language-divider {
+        margin: 40px 0;
+        border: 0;
+        border-top: 1px dashed #ccc;
+    }
+
+    /* === 3. MOBILE VERTICAL STYLES === */
     /* Triggers only on screens smaller than an iPad */
     @media screen and (max-width: 768px) {
         body.cv-mode {
@@ -101,14 +159,24 @@ const { pageTitle } = Astro.props;
         }
     }
 
-    /* === 3. PRINT / PDF EXPORT STYLES === */
-    /* Left completely untouched to preserve your PDF output */
+    /* === 4. PRINT / PDF EXPORT STYLES === */
     @media print {
         @page {
-            margin: 15mm 20mm;
+            /* 5mm top/bottom, 8mm left/right */
+            margin: 5mm 8mm;
             size: A4;
         }
-        
+
+        /* Mobile PDF override & anti-inflation: always lay out at A4 width,
+           so PDFs made on a phone match desktop ones */
+        html, body.cv-mode {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            min-width: 210mm;
+            max-width: 210mm;
+            width: 210mm;
+        }
+
         body.cv-mode {
             background: white;
             display: block;
@@ -116,8 +184,8 @@ const { pageTitle } = Astro.props;
         }
 
         .a4-page {
-            width: 100%;
-            max-width: none;
+            width: 210mm;
+            max-width: 210mm;
             height: auto;
             margin: 0;
             padding: 0;
@@ -125,12 +193,14 @@ const { pageTitle } = Astro.props;
             border: none;
         }
 
-        .page-break {
+        .page-break,
+        .language-divider {
             display: none;
         }
 
         .chinese-version {
             page-break-before: always;
+            break-before: page;
             padding-top: 0;
         }
 
@@ -142,11 +212,10 @@ const { pageTitle } = Astro.props;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
         }
-        
-        .section-block, .item {
-            break-inside: auto;
-        }
-        
+
+        h2 { border-bottom: 1.5px solid black; }
+        a { text-decoration: none; color: black; border: none; }
+
         h2 {
             break-after: avoid;
         }
