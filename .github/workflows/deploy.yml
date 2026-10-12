@@ -4,6 +4,9 @@ on:
   # Trigger the workflow every time you push to the main branch
   push:
     branches: [ main ]
+  # Build pull requests into main too, to check they build (they are never deployed)
+  pull_request:
+    branches: [ main ]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -26,6 +29,8 @@ jobs:
         # It installs Node, runs 'npm install', and 'npm run build' automatically
 
   deploy:
+    # Pull requests are only built; pushes to main and manual runs also deploy
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:
