@@ -87,8 +87,9 @@ const pageImage = "/images/pro-profile.webp";
                 // Split the email into pieces so bots don't recognize it
                 const user = "joy.chr.pr";
                 const domain = "gmail.com";
-                // Assemble and execute on click
-                window.location.href = `mailto:${user}@${domain}`;
+                // Assemble and execute on click (join() stops the minifier from
+                // merging the pieces back into one string in the built page)
+                window.location.href = "mailto:" + [user, domain].join("@");
             });
         });
     </script>
