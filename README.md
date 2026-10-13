@@ -6,14 +6,14 @@ The site has two sides on one domain: **Pro** (projects, technical blog, TILs, C
 
 ## Stack
 
-- [Astro](https://astro.build) 5, built as a static site, with posts in Markdown
+- [Astro](https://astro.build) 7, built as a static site, with posts in Markdown
 - Raw CSS with CSS variables for light and dark mode
 - GitHub Pages, deployed by GitHub Actions on every push to `main`
 - Cloudflare for the domain and DNS
 
 ## Run locally
 
-Use Node 22 or newer.
+Use Node 22.12 or newer.
 
 ```sh
 npm ci            # install the exact dependency versions
